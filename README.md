@@ -71,7 +71,7 @@ This copies the skills to `~/.claude/skills/` and three subagents to `~/.claude/
 
 ### Claude.ai
 
-Download a skill zip from [Releases](https://github.com/UtpalDasLabs/token-saver-skills/releases), then upload it under **Customize → Skills → + → Upload a skill**. In chat, the skill prints a routing plan and tells you which model to switch to for each step.
+Download a skill zip from the [`dist/` folder](dist) (for example [`social-creator-routing.zip`](dist/social-creator-routing.zip), plus [`base-model-routing.zip`](dist/base-model-routing.zip)), then upload it under **Customize → Skills → + → Upload a skill**. In chat, the skill prints a routing plan and tells you which model to switch to for each step.
 
 ### API and agent frameworks
 
@@ -125,6 +125,7 @@ data/personas/     Workload + routing data per persona (single source of truth)
 benchmarks/        Pricing, assumptions, calculator, results
 routing.json       Machine-readable routing tables
 install.sh         Claude Code installer
+dist/              Ready-to-upload zips for Claude.ai (run tools/package.sh to rebuild)
 ```
 
 ## Contributing
