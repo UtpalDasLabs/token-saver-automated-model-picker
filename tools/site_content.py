@@ -21,7 +21,7 @@ for pl in PL:
             cmd = f"./install.sh {pl['id']}{flag} PERSONA"
         if pl["id"] == "perplexity" and t["id"] == "computer":
             cmd = f"{REPO}/tree/main/dist/perplexity/plugin"
-        tools.append({"name": t["name"], "auto": bool(t.get("agents_dir")) or t["id"] == "api", "how": t["how"].replace("`", ""), "command": cmd, "docUrl": t["doc"]})
+        tools.append({"name": t["name"], "auto": bool(t.get("agents_dir")), "how": t["how"].replace("`", ""), "command": cmd, "docUrl": t["doc"]})
     platforms.append({"id": pl["id"], "name": pl["name"], "product": pl["product"],
                       "avgCostSaved": s["avg_cost_saving_pct"], "avgTokensSaved": s["avg_token_saving_pct"],
                       "pessimisticCost": s["conservative_avg_cost_saving_pct"], "baselineModel": s["baseline_model"],
