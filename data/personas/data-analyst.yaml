@@ -2,7 +2,7 @@ name: data-analyst-routing
 who: "Data and BI analysts"
 title: Data analyst routing
 persona: Data and BI analysts, analytics engineers and spreadsheet power users writing SQL, notebooks, dashboards and reports.
-purpose: Let the database and code do the maths. Models write queries, explain results and decide what matters; Opus only for the interpretation and tricky modelling.
+purpose: Let the database and code do the maths. Models write queries, explain results and decide what matters; {T3} only for the interpretation and tricky modelling.
 win: Correct numbers, explained clearly, with model spend that does not scale with table size.
 description: "Model routing for data analysis: which tier writes SQL, pandas or spreadsheet formulas, cleans data, builds charts and dashboards, explains anomalies and writes insight summaries. Use for querying, analysing or reporting on data. Not for qualitative research synthesis."
 sessions_per_week: 12
@@ -31,7 +31,7 @@ tool_first:
   - Chart rendering with code, not a model describing a chart.
 anti_patterns:
   - Pasting 10,000 rows into a model and asking for the average.
-  - Opus writing a simple SELECT.
+  - "{T3} writing a simple SELECT."
   - Insights without the numbers they rest on.
 handoff_tip: "Brief T2 with the schema, the metric definition, the expected grain and 'SQL only, then the row count'."
 example:

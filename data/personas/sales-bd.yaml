@@ -2,7 +2,7 @@ name: sales-bd-routing
 who: "Sales and business development"
 title: Sales and BD routing
 persona: Account executives, SDRs, founders doing sales and business developers researching accounts and writing outreach.
-purpose: Account strategy and the high-value deal deserve Opus. List enrichment, first-line personalisation and CRM hygiene do not.
+purpose: Account strategy and the high-value deal deserve {T3}. List enrichment, first-line personalisation and CRM hygiene do not.
 win: More qualified meetings per week at a lower AI cost per meeting booked.
 description: "Model routing for sales and business development: which tier researches accounts, enriches leads, personalises outreach, writes sequences, preps calls, summarises calls and updates CRM. Use for prospecting, outreach or deal work. Not for marketing campaigns or ads."
 sessions_per_week: 15
@@ -30,7 +30,7 @@ tool_first:
   - Email verification and bounce checks with a verification tool.
   - Sequencing and scheduling in the sales tool, not via a model.
 anti_patterns:
-  - Opus writing 200 first lines.
+  - "{T3} writing 200 first lines."
   - Pasting whole LinkedIn profiles into every personalisation call.
   - Model-generated pricing without the price sheet.
 handoff_tip: "Brief T1 with the ICP card, the lead's 4 fields and 'one sentence, must reference one fact from input'."

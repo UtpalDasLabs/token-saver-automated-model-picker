@@ -1,0 +1,37 @@
+id: anthropic
+name: Anthropic
+product: Claude
+order: 1
+checked: "2026-10-20"
+source: "https://platform.claude.com/docs/en/about-claude/pricing"
+baseline_tier: T3
+baseline_effort: medium
+tiers:
+  T1: {model: claude-haiku-5-5, short: haiku, label: "Claude Haiku 5.5", prices: [{upto_k: 100, input: 0.10, output: 0.50}, {upto_k: null, input: 0.50, output: 2.50}]}
+  T2: {model: claude-sonnet-5-5, short: sonnet, label: "Claude Sonnet 5.5", prices: [{upto_k: null, input: 2.00, output: 10.00}]}
+  T3: {model: claude-opus-5-5, short: opus, label: "Claude Opus 5.5", prices: [{upto_k: null, input: 4.00, output: 20.00}]}
+  T4: {model: claude-fable-5-1, short: fable, label: "Claude Fable 5.1", prices: [{upto_k: null, input: 10.00, output: 50.00}]}
+context_rule: "Claude Haiku 5.5 costs 5x more per token once a prompt passes 100k tokens. Split or compact before that line."
+price_notes:
+  - "Haiku 5.5 costs 5x more per token once a prompt passes 100k tokens. Split or compact before that line."
+  - "Batch API: 50% off input and output. Cache hits cost 5% of input price on Opus 5.5 and Sonnet 5.5."
+default_tool: claude-code
+tools:
+  - id: claude-code
+    name: Claude Code
+    auto: true
+    skills_dir: "~/.claude/skills"
+    agents_dir: "~/.claude/agents"
+    agent_format: claude
+    how: "Skills go in `~/.claude/skills/`, the three worker subagents in `~/.claude/agents/`. Each subagent pins its own `model` and `effort`, so delegated work really runs on the cheaper model. Check with `/skills` and `/agents`."
+    doc: "https://code.claude.com/docs/en/sub-agents"
+  - id: claude-ai
+    name: Claude.ai
+    auto: false
+    how: "Upload a skill zip under Customize → Skills → + → Upload a skill. The skill prints a routing plan and tells you which model to switch to at each step."
+    doc: "https://code.claude.com/docs/en/skills"
+  - id: api
+    name: Claude API
+    auto: true
+    how: "Load `routing.json`, look up the task's tier and call that model ID."
+    doc: "https://platform.claude.com/docs/en/about-claude/pricing"

@@ -1,0 +1,29 @@
+id: perplexity
+name: Perplexity
+product: Perplexity Computer and Agent API
+order: 6
+checked: "2026-10-20"
+source: "https://docs.perplexity.ai/docs/agent-api/models"
+baseline_tier: T3
+baseline_effort: medium
+tiers:
+  T1: {model: openai/gpt-6-luna, short: luna, label: "GPT-6 Luna", prices: [{upto_k: null, input: 0.10, output: 0.50}]}
+  T2: {model: google/gemini-3.8-flash, short: gemini-flash, label: "Gemini 3.8 Flash", prices: [{upto_k: null, input: 0.75, output: 3.75}]}
+  T3: {model: anthropic/claude-opus-5-5, short: opus, label: "Claude Opus 5.5", prices: [{upto_k: null, input: 4.00, output: 20.00}]}
+  T4: {model: anthropic/claude-fable-5-1, short: fable, label: "Claude Fable 5.1", prices: [{upto_k: null, input: 10.00, output: 50.00}]}
+context_rule: "Web search and fetch tool calls are billed on top of tokens; search once, then reuse the results."
+price_notes:
+  - "Agent API model prices, which match each provider's direct pricing. Web search and fetch tools are billed separately and not counted."
+  - "For quick web-grounded lookups, `perplexity/sonar` is a good T1 alternative because it searches and cites in one call."
+default_tool: computer
+tools:
+  - id: computer
+    name: Perplexity Computer
+    auto: false
+    how: "Import the whole pack as a plugin: Plugins → Add custom → Import plugin from GitHub, and paste the URL of `dist/perplexity/plugin`. Or upload a single skill zip under Plugins → Add custom → Skill. The skill makes Computer plan by tier and keep cheap steps cheap."
+    doc: "https://www.perplexity.ai/help-center/en/articles/2026100802-create-or-upload-a-custom-plugin"
+  - id: api
+    name: Perplexity Agent API
+    auto: true
+    how: "Upload skills with the Skills API, then set `model` per request from `routing.json`. One API key covers all four tiers across providers."
+    doc: "https://docs.perplexity.ai/docs/agent-api/skills"

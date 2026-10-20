@@ -2,7 +2,7 @@ name: job-seeker-routing
 who: "Job seekers and career changers"
 title: Job seeker routing
 persona: "Professionals searching for a new role: tailoring CVs, writing cover letters, researching companies and preparing interviews."
-purpose: Positioning and interview strategy deserve Opus. Matching keywords, formatting and drafting from your own facts are cheaper-tier work.
+purpose: Positioning and interview strategy deserve {T3}. Matching keywords, formatting and drafting from your own facts are cheaper-tier work.
 win: More tailored applications and better-prepared interviews, without burning premium tokens on formatting.
 description: "Model routing for job search: which tier positions your story, tailors CVs, writes cover letters, matches keywords, researches companies, preps interviews and drafts follow-ups. Use for applying to jobs or preparing interviews. Not for hiring or recruiting candidates."
 sessions_per_week: 8
@@ -30,7 +30,7 @@ tool_first:
   - PDF export and formatting with a template, not a model.
   - Keyword overlap counts with a script.
 anti_patterns:
-  - Opus reformatting a CV.
+  - "{T3} reformatting a CV."
   - Letting any model invent achievements not in the master CV.
   - Rewriting the whole CV for every application instead of swapping bullets.
 handoff_tip: "Brief T2 with the extracted requirements, the master bullets and 'only reword facts given; no new claims'."

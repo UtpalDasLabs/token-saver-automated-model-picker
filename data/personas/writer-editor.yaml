@@ -2,7 +2,7 @@ name: writer-editor-routing
 who: "Writers, newsletter authors, editors"
 title: Writer and editor routing
 persona: Newsletter writers, bloggers, ghostwriters, copywriters and editors producing long-form text.
-purpose: The idea, the argument and the final edit deserve Opus. Outlines, drafts from approved outlines, proofreading and formatting do not.
+purpose: The idea, the argument and the final edit deserve {T3}. Outlines, drafts from approved outlines, proofreading and formatting do not.
 win: Finished pieces with a strong point of view, produced at a fraction of the token cost.
 description: "Model routing for writing and editing: which tier ideates, outlines, drafts, edits, proofreads, fact-checks and formats newsletters, blogs, essays, ghostwritten posts and books. Use for long-form writing or editing. Not for short social captions or ad copy."
 sessions_per_week: 10
@@ -30,7 +30,7 @@ tool_first:
   - Markdown formatting and lint with a formatter.
   - Find-and-replace consistency fixes (spelling of names, units) with search.
 anti_patterns:
-  - Opus proofreading for commas.
+  - "{T3} proofreading for commas."
   - Asking for a "better version" instead of a specific edit list.
   - Drafting before the thesis is agreed.
 handoff_tip: "Brief T2 with the voice sample, the outline section, the word target and 'no new arguments'."

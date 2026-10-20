@@ -1,8 +1,8 @@
 name: vibe-coder-routing
 who: "Indie hackers and AI-assisted builders"
 title: Vibe coder routing
-persona: Indie hackers, prototypers and AI-assisted builders shipping web apps with Claude Code, Cursor-style editors, Vercel and Supabase.
-purpose: Ship working code fast without paying Opus prices for routine edits. Opus thinks, Sonnet types, Haiku and scripts do the chores.
+persona: Indie hackers, prototypers and AI-assisted builders shipping web apps with AI coding agents, Vercel and Supabase.
+purpose: Ship working code fast without paying {T3} prices for routine edits. {T3} thinks, {T2} types, {T1} and scripts do the chores.
 win: Feature merged, tests green, lowest spend per merged change.
 description: "Model routing for AI-assisted coding: decide which tier plans, implements, tests, debugs and reviews code. Use when building features, fixing bugs, refactoring, writing tests or commits, or asked to code cheaper. Not for product strategy or PRDs."
 sessions_per_week: 20
@@ -29,14 +29,14 @@ context_diet:
   - Send the failing test output, the stack trace's top frames and the touched files, never the whole repo.
   - Give T2 workers file paths plus a 10-line spec; let them open files themselves.
   - Summarise long CI logs on T1 down to the first error and its cause.
-  - Keep the project conventions (stack, lint rules, folder layout) in one stable CLAUDE.md-style file so it is cached.
+  - Keep the project conventions (stack, lint rules, folder layout) in one stable AGENTS.md or CLAUDE.md-style project file so it is cached.
 tool_first:
   - Formatting, import sorting and lint autofix (`prettier --write`, `eslint --fix`, `ruff --fix`).
   - Renames and moves with `git mv` and editor refactors, not a model rewrite.
   - Dead links, env var presence, route lists, TODO extraction with `grep`/`rg` scripts.
   - "Type errors: run `tsc` first and pass only the errors to the worker."
 anti_patterns:
-  - Asking Opus to "make the button blue".
+  - Asking {T3} to "make the button blue".
   - Pasting the full repo into a commit-message request.
   - Letting a T2 worker loop five times on the same failing test instead of escalating after two.
   - Refactoring and adding features in the same step, which makes validation impossible.

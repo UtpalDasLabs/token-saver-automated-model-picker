@@ -1,0 +1,32 @@
+id: google
+name: Google
+product: Gemini
+order: 3
+checked: "2026-10-20"
+source: "https://ai.google.dev/gemini-api/docs/pricing"
+baseline_tier: T3
+baseline_effort: medium
+tiers:
+  T1: {model: gemini-3.1-flash-lite, short: flash-lite, label: "Gemini 3.1 Flash-Lite", prices: [{upto_k: null, input: 0.25, output: 1.50}]}
+  T2: {model: gemini-3.8-flash, short: flash, label: "Gemini 3.8 Flash", prices: [{upto_k: null, input: 1.50, output: 7.50}]}
+  T3: {model: gemini-4-argon, short: argon, label: "Gemini 4 Argon", prices: [{upto_k: null, input: 4.00, output: 20.00}]}
+  T4: {model: gemini-4-argon, short: argon-high, label: "Gemini 4 Argon (high thinking)", force_effort: high, prices: [{upto_k: null, input: 4.00, output: 20.00}]}
+context_rule: "Keep T1 prompts small; Flash-Lite is for short, bounded inputs."
+price_notes:
+  - "Calculated at standard prices. Introductory prices are lower until they expire: Gemini 4 Argon $2/$10 until 30 Nov 2026, Gemini 3.8 Flash $0.75/$3.75 until 31 Dec 2026."
+  - "Batch and Flex processing halve the price for work that can wait."
+default_tool: gemini-cli
+tools:
+  - id: gemini-cli
+    name: Gemini CLI
+    auto: true
+    skills_dir: "~/.gemini/skills"
+    agents_dir: "~/.gemini/agents"
+    agent_format: gemini
+    how: "Skills go in `~/.gemini/skills/`, the three worker subagents in `~/.gemini/agents/`. Each subagent pins its own `model`, so delegated work runs on Flash-Lite or Flash."
+    doc: "https://geminicli.com/docs/core/subagents"
+  - id: api
+    name: Gemini API and Managed Agents
+    auto: true
+    how: "Managed Agents read skills from `.agents/skills/` in the workspace. For your own code, load `routing.json` and call the tier's model."
+    doc: "https://ai.google.dev/gemini-api/docs/pricing"

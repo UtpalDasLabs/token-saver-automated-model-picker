@@ -1,0 +1,37 @@
+id: openai
+name: OpenAI
+product: GPT, ChatGPT and Codex
+order: 2
+checked: "2026-10-20"
+source: "https://developers.openai.com/api/docs/pricing"
+baseline_tier: T3
+baseline_effort: medium
+tiers:
+  T1: {model: gpt-6-luna, short: luna, label: "GPT-6 Luna", prices: [{upto_k: null, input: 0.10, output: 0.50}]}
+  T2: {model: gpt-6.1-sol, short: sol, label: "GPT-6.1 Sol (low effort)", force_effort: low, prices: [{upto_k: null, input: 2.00, output: 10.00}]}
+  T3: {model: gpt-6.1-sol, short: sol, label: "GPT-6.1 Sol", prices: [{upto_k: null, input: 2.00, output: 10.00}]}
+  T4: {model: gpt-6-astra, short: astra, label: "GPT-6 Astra", prices: [{upto_k: null, input: 10.00, output: 50.00}]}
+context_rule: "GPT-6.1 Sol and GPT-6 Luna cost more per token above 272k input tokens. Compact long sessions before that."
+price_notes:
+  - "T2 and T3 use the same model, GPT-6.1 Sol. The saving between them comes from reasoning effort: run routine work at `low`, judgement at `medium` or `high`."
+  - "Long prompts cost more on GPT-6.1 Sol and GPT-6 Luna above 272k tokens. Batch and Flex processing are cheaper for work that can wait."
+default_tool: codex
+tools:
+  - id: codex
+    name: Codex (CLI, IDE, app)
+    auto: true
+    skills_dir: "~/.agents/skills"
+    agents_dir: "~/.codex/agents"
+    agent_format: codex
+    how: "Skills go in `~/.agents/skills/`, the three worker agents (TOML) in `~/.codex/agents/`. Each agent pins `model` and `model_reasoning_effort`, so delegated work runs on GPT-6 Luna or Sol at low effort."
+    doc: "https://learn.chatgpt.com/docs/agent-configuration/subagents"
+  - id: chatgpt
+    name: ChatGPT
+    auto: false
+    how: "Add a skill zip where your ChatGPT plan supports skills. The skill prints a routing plan and tells you when to switch between GPT-6 Luna, GPT-6 and GPT-6 Pro."
+    doc: "https://learn.chatgpt.com/docs/build-skills"
+  - id: api
+    name: OpenAI API
+    auto: true
+    how: "Load `routing.json`, look up the task's tier and call that model with the listed `reasoning.effort`."
+    doc: "https://developers.openai.com/api/docs/pricing"

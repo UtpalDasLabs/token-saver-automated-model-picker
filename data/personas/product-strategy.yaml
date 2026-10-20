@@ -2,7 +2,7 @@ name: product-strategy-routing
 who: "Product managers and founders"
 title: Product strategy routing
 persona: Product managers, product leads and founders writing PRDs, roadmaps, strategy memos and decision documents.
-purpose: Keep Opus on the decisions that move the business and push the formatting, summarising and template work down.
+purpose: Keep {T3} on the decisions that move the business and push the formatting, summarising and template work down.
 win: Better decisions per hour, with documents that stakeholders read and trust, at a fraction of the token cost.
 description: "Model routing for product management and founders: which tier writes PRDs, roadmaps, strategy memos, user research synthesis, prioritisation and stakeholder updates. Use when planning products, features or go-to-market. Not for writing the code itself."
 sessions_per_week: 12
@@ -32,8 +32,8 @@ tool_first:
   - Ticket formatting and bulk label changes with the tracker's own bulk edit or API script.
   - Date maths for roadmaps in a sheet, not a model.
 anti_patterns:
-  - Opus formatting Jira tickets.
-  - Haiku deciding the roadmap.
+  - "{T3} formatting Jira tickets."
+  - "{T1} deciding the roadmap."
   - Feeding 20 raw transcripts into one strategy prompt.
 handoff_tip: "Brief T2 with the product context card, the template, the decided direction and 'no new strategy, flag gaps only'."
 example:

@@ -1,0 +1,12 @@
+{
+  "name": "token-saver-model-picker",
+  "version": "2.0.0",
+  "description": "Token Saver: Automating the Model Picker. 18 skills that route each task to the cheapest model that can finish it: base routing, 4 overlays and 13 personas.",
+  "author": {
+    "name": "Utpal Das",
+    "url": "https://utpaldas.com"
+  },
+  "homepage": "https://utpaldas.com/labs/token-saver",
+  "repository": "https://github.com/UtpalDasLabs/token-saver-automated-model-picker",
+  "license": "MIT"
+}

@@ -1,137 +1,150 @@
-# Token Saver Skills
+# Token Saver: Automating the Model Picker
 
-**Stop paying top-model prices for bottom-model work.** 18 open-source [Agent Skills](https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview) that send each AI task to the cheapest model that can actually finish it: a script, Haiku, Sonnet, Opus or Fable. One skill per way of working: vibe coding, social video, product, research, ops, marketing, writing, data, design, sales, support, teaching and job search.
+**Stop paying top-model prices for bottom-model work.** An open-source pack of [Agent Skills](https://agentskills.io) that picks the model for you: each AI task goes to the cheapest model that can actually finish it — a script, a small model, a mid model or the flagship — and moves up only when a check fails.
 
-| | Average across 13 personas | Pessimistic case |
+Packaged for **Anthropic, OpenAI, Google, DeepSeek, Qwen and Perplexity**, with one skill for each of 13 ways of working: vibe coding, social video, product, research, ops, marketing, writing, data, design, sales, support, teaching and job search.
+
+| Modeled across 6 platforms × 13 personas | Average | Pessimistic case |
 |---|---:|---:|
-| **Tokens saved** | <!-- AVG_TOKENS -->55%<!-- /AVG_TOKENS --> | <!-- CONS_TOKENS -->17%<!-- /CONS_TOKENS --> |
-| **Cost saved** | <!-- AVG_COST -->69%<!-- /AVG_COST --> | <!-- CONS_COST -->54%<!-- /CONS_COST --> |
+| **Cost saved** | **72%** | 58% |
+| **Tokens saved** | **55%** | 17% |
 
-Compared with running every task on Claude Opus 5.5 at default effort with full context. Modeled with Anthropic list prices checked 2026-10-20, including the cost of failed attempts, escalations and the routing overhead itself. [How it's calculated](METHODOLOGY.md) · [Full results](benchmarks/RESULTS.md)
+Cost savings range from 44% to 88% depending on persona and platform. Compared with running every task on each platform's strong everyday model with full context, including failed attempts, escalations and the routing overhead itself. [How it's calculated](METHODOLOGY.md) · [Every persona on every platform](benchmarks/RESULTS.md) · [Website](https://utpaldas.com/labs/token-saver)
 
-![Modeled savings by persona](docs/savings.svg)
+![Modeled cost savings by persona and platform](docs/savings.svg)
 
-Built by [Utpal Das](https://utpaldas.com/labs/token-saver) · MIT licence.
+---
 
-## The idea in one table
+## Find your package in 3 steps
 
-| Tier | Runs on | Typical work | Price vs. Opus 5.5 |
-|---|---|---|---|
-| **T0** Tool | No model: script, formula, linter | Rename, dedupe, link check, format, maths | ~0 |
-| **T1** Micro | Haiku 5.5 | Tag, extract, classify, summarise, short rewrite | ~1/40 |
-| **T2** Standard | Sonnet 5.5 | Routine production from a clear spec | 1/2 |
-| **T3** Strong | Opus 5.5 | Ambiguity, strategy, architecture, judging, final review | 1x |
-| **T4** Frontier | Fable 5.1 | Rare: high stakes after Opus at high effort fell short | 2.5x |
+1. **Pick your platform** — the AI you already pay for.
+2. **Pick your persona** — the row that sounds like your week.
+3. **Install** `base-model-routing` + your persona skill (zip link in the cell, or `./install.sh <platform> <persona>`).
 
-Opus thinks, Sonnet produces, Haiku and scripts do the chores. Escalate one tier at a time, only after a check fails.
+Each cell shows the modeled **cost saving** for that persona on that platform. Click the percentage for the skill file, or **zip** to download it.
 
-## Pick your skill
+| Persona | Who it's for | [Anthropic](platforms/anthropic/README.md) | [OpenAI](platforms/openai/README.md) | [Google](platforms/google/README.md) | [DeepSeek](platforms/deepseek/README.md) | [Qwen](platforms/qwen/README.md) | [Perplexity](platforms/perplexity/README.md) |
+|---|---|---|---|---|---|---|---|
+| **Data analyst** | Data and BI analysts | [**−84%**](skills/anthropic/data-analyst-routing/SKILL.md) · [zip](dist/anthropic/data-analyst-routing.zip) | [**−78%**](skills/openai/data-analyst-routing/SKILL.md) · [zip](dist/openai/data-analyst-routing.zip) | [**−85%**](skills/google/data-analyst-routing/SKILL.md) · [zip](dist/google/data-analyst-routing.zip) | [**−87%**](skills/deepseek/data-analyst-routing/SKILL.md) · [zip](dist/deepseek/data-analyst-routing.zip) | [**−88%**](skills/qwen/data-analyst-routing/SKILL.md) · [zip](dist/qwen/data-analyst-routing.zip) | [**−87%**](skills/perplexity/data-analyst-routing/SKILL.md) · [zip](dist/perplexity/data-analyst-routing.zip) |
+| **Designer** | UX and UI designers | [**−60%**](skills/anthropic/designer-routing/SKILL.md) · [zip](dist/anthropic/designer-routing.zip) | [**−51%**](skills/openai/designer-routing/SKILL.md) · [zip](dist/openai/designer-routing.zip) | [**−63%**](skills/google/designer-routing/SKILL.md) · [zip](dist/google/designer-routing.zip) | [**−67%**](skills/deepseek/designer-routing/SKILL.md) · [zip](dist/deepseek/designer-routing.zip) | [**−69%**](skills/qwen/designer-routing/SKILL.md) · [zip](dist/qwen/designer-routing.zip) | [**−66%**](skills/perplexity/designer-routing/SKILL.md) · [zip](dist/perplexity/designer-routing.zip) |
+| **Educator and course creator** | Teachers and course creators | [**−67%**](skills/anthropic/educator-creator-routing/SKILL.md) · [zip](dist/anthropic/educator-creator-routing.zip) | [**−55%**](skills/openai/educator-creator-routing/SKILL.md) · [zip](dist/openai/educator-creator-routing.zip) | [**−71%**](skills/google/educator-creator-routing/SKILL.md) · [zip](dist/google/educator-creator-routing.zip) | [**−75%**](skills/deepseek/educator-creator-routing/SKILL.md) · [zip](dist/deepseek/educator-creator-routing.zip) | [**−77%**](skills/qwen/educator-creator-routing/SKILL.md) · [zip](dist/qwen/educator-creator-routing.zip) | [**−77%**](skills/perplexity/educator-creator-routing/SKILL.md) · [zip](dist/perplexity/educator-creator-routing.zip) |
+| **Growth marketer** | Marketers, SEO and growth | [**−65%**](skills/anthropic/growth-marketer-routing/SKILL.md) · [zip](dist/anthropic/growth-marketer-routing.zip) | [**−56%**](skills/openai/growth-marketer-routing/SKILL.md) · [zip](dist/openai/growth-marketer-routing.zip) | [**−69%**](skills/google/growth-marketer-routing/SKILL.md) · [zip](dist/google/growth-marketer-routing.zip) | [**−72%**](skills/deepseek/growth-marketer-routing/SKILL.md) · [zip](dist/deepseek/growth-marketer-routing.zip) | [**−75%**](skills/qwen/growth-marketer-routing/SKILL.md) · [zip](dist/qwen/growth-marketer-routing.zip) | [**−73%**](skills/perplexity/growth-marketer-routing/SKILL.md) · [zip](dist/perplexity/growth-marketer-routing.zip) |
+| **Job seeker** | Job seekers and career changers | [**−62%**](skills/anthropic/job-seeker-routing/SKILL.md) · [zip](dist/anthropic/job-seeker-routing.zip) | [**−53%**](skills/openai/job-seeker-routing/SKILL.md) · [zip](dist/openai/job-seeker-routing.zip) | [**−66%**](skills/google/job-seeker-routing/SKILL.md) · [zip](dist/google/job-seeker-routing.zip) | [**−71%**](skills/deepseek/job-seeker-routing/SKILL.md) · [zip](dist/deepseek/job-seeker-routing.zip) | [**−74%**](skills/qwen/job-seeker-routing/SKILL.md) · [zip](dist/qwen/job-seeker-routing.zip) | [**−71%**](skills/perplexity/job-seeker-routing/SKILL.md) · [zip](dist/perplexity/job-seeker-routing.zip) |
+| **Ops assistant** | VAs, ops and chiefs of staff | [**−83%**](skills/anthropic/ops-assistant-routing/SKILL.md) · [zip](dist/anthropic/ops-assistant-routing.zip) | [**−79%**](skills/openai/ops-assistant-routing/SKILL.md) · [zip](dist/openai/ops-assistant-routing.zip) | [**−84%**](skills/google/ops-assistant-routing/SKILL.md) · [zip](dist/google/ops-assistant-routing.zip) | [**−82%**](skills/deepseek/ops-assistant-routing/SKILL.md) · [zip](dist/deepseek/ops-assistant-routing.zip) | [**−88%**](skills/qwen/ops-assistant-routing/SKILL.md) · [zip](dist/qwen/ops-assistant-routing.zip) | [**−86%**](skills/perplexity/ops-assistant-routing/SKILL.md) · [zip](dist/perplexity/ops-assistant-routing.zip) |
+| **Product strategy** | Product managers and founders | [**−57%**](skills/anthropic/product-strategy-routing/SKILL.md) · [zip](dist/anthropic/product-strategy-routing.zip) | [**−47%**](skills/openai/product-strategy-routing/SKILL.md) · [zip](dist/openai/product-strategy-routing.zip) | [**−61%**](skills/google/product-strategy-routing/SKILL.md) · [zip](dist/google/product-strategy-routing.zip) | [**−65%**](skills/deepseek/product-strategy-routing/SKILL.md) · [zip](dist/deepseek/product-strategy-routing.zip) | [**−69%**](skills/qwen/product-strategy-routing/SKILL.md) · [zip](dist/qwen/product-strategy-routing.zip) | [**−65%**](skills/perplexity/product-strategy-routing/SKILL.md) · [zip](dist/perplexity/product-strategy-routing.zip) |
+| **Research analyst** | Analysts, consultants, researchers | [**−79%**](skills/anthropic/research-analyst-routing/SKILL.md) · [zip](dist/anthropic/research-analyst-routing.zip) | [**−73%**](skills/openai/research-analyst-routing/SKILL.md) · [zip](dist/openai/research-analyst-routing.zip) | [**−79%**](skills/google/research-analyst-routing/SKILL.md) · [zip](dist/google/research-analyst-routing.zip) | [**−75%**](skills/deepseek/research-analyst-routing/SKILL.md) · [zip](dist/deepseek/research-analyst-routing.zip) | [**−85%**](skills/qwen/research-analyst-routing/SKILL.md) · [zip](dist/qwen/research-analyst-routing.zip) | [**−83%**](skills/perplexity/research-analyst-routing/SKILL.md) · [zip](dist/perplexity/research-analyst-routing.zip) |
+| **Sales and BD** | Sales and business development | [**−75%**](skills/anthropic/sales-bd-routing/SKILL.md) · [zip](dist/anthropic/sales-bd-routing.zip) | [**−67%**](skills/openai/sales-bd-routing/SKILL.md) · [zip](dist/openai/sales-bd-routing.zip) | [**−76%**](skills/google/sales-bd-routing/SKILL.md) · [zip](dist/google/sales-bd-routing.zip) | [**−77%**](skills/deepseek/sales-bd-routing/SKILL.md) · [zip](dist/deepseek/sales-bd-routing.zip) | [**−82%**](skills/qwen/sales-bd-routing/SKILL.md) · [zip](dist/qwen/sales-bd-routing.zip) | [**−81%**](skills/perplexity/sales-bd-routing/SKILL.md) · [zip](dist/perplexity/sales-bd-routing.zip) |
+| **Social creator** | Video and social media creators | [**−73%**](skills/anthropic/social-creator-routing/SKILL.md) · [zip](dist/anthropic/social-creator-routing.zip) | [**−65%**](skills/openai/social-creator-routing/SKILL.md) · [zip](dist/openai/social-creator-routing.zip) | [**−75%**](skills/google/social-creator-routing/SKILL.md) · [zip](dist/google/social-creator-routing.zip) | [**−77%**](skills/deepseek/social-creator-routing/SKILL.md) · [zip](dist/deepseek/social-creator-routing.zip) | [**−81%**](skills/qwen/social-creator-routing/SKILL.md) · [zip](dist/qwen/social-creator-routing.zip) | [**−80%**](skills/perplexity/social-creator-routing/SKILL.md) · [zip](dist/perplexity/social-creator-routing.zip) |
+| **Support and success** | Support and customer success | [**−73%**](skills/anthropic/support-success-routing/SKILL.md) · [zip](dist/anthropic/support-success-routing.zip) | [**−64%**](skills/openai/support-success-routing/SKILL.md) · [zip](dist/openai/support-success-routing.zip) | [**−75%**](skills/google/support-success-routing/SKILL.md) · [zip](dist/google/support-success-routing.zip) | [**−77%**](skills/deepseek/support-success-routing/SKILL.md) · [zip](dist/deepseek/support-success-routing.zip) | [**−81%**](skills/qwen/support-success-routing/SKILL.md) · [zip](dist/qwen/support-success-routing.zip) | [**−79%**](skills/perplexity/support-success-routing/SKILL.md) · [zip](dist/perplexity/support-success-routing.zip) |
+| **Vibe coder** | Indie hackers and AI-assisted builders | [**−68%**](skills/anthropic/vibe-coder-routing/SKILL.md) · [zip](dist/anthropic/vibe-coder-routing.zip) | [**−60%**](skills/openai/vibe-coder-routing/SKILL.md) · [zip](dist/openai/vibe-coder-routing.zip) | [**−72%**](skills/google/vibe-coder-routing/SKILL.md) · [zip](dist/google/vibe-coder-routing.zip) | [**−77%**](skills/deepseek/vibe-coder-routing/SKILL.md) · [zip](dist/deepseek/vibe-coder-routing.zip) | [**−79%**](skills/qwen/vibe-coder-routing/SKILL.md) · [zip](dist/qwen/vibe-coder-routing.zip) | [**−77%**](skills/perplexity/vibe-coder-routing/SKILL.md) · [zip](dist/perplexity/vibe-coder-routing.zip) |
+| **Writer and editor** | Writers, newsletter authors, editors | [**−56%**](skills/anthropic/writer-editor-routing/SKILL.md) · [zip](dist/anthropic/writer-editor-routing.zip) | [**−44%**](skills/openai/writer-editor-routing/SKILL.md) · [zip](dist/openai/writer-editor-routing.zip) | [**−60%**](skills/google/writer-editor-routing/SKILL.md) · [zip](dist/google/writer-editor-routing.zip) | [**−64%**](skills/deepseek/writer-editor-routing/SKILL.md) · [zip](dist/deepseek/writer-editor-routing.zip) | [**−67%**](skills/qwen/writer-editor-routing/SKILL.md) · [zip](dist/qwen/writer-editor-routing.zip) | [**−65%**](skills/perplexity/writer-editor-routing/SKILL.md) · [zip](dist/perplexity/writer-editor-routing.zip) |
 
-<!-- SAVINGS:START -->
-| Skill | Who it's for | Tokens saved | Cost saved |
-|---|---|---:|---:|
-| [`data-analyst-routing`](skills/data-analyst-routing/SKILL.md) | Data and BI analysts | **79%** | **84%** |
-| [`ops-assistant-routing`](skills/ops-assistant-routing/SKILL.md) | VAs, ops and chiefs of staff | **63%** | **83%** |
-| [`research-analyst-routing`](skills/research-analyst-routing/SKILL.md) | Analysts, consultants, researchers | **33%** | **79%** |
-| [`sales-bd-routing`](skills/sales-bd-routing/SKILL.md) | Sales and business development | **51%** | **75%** |
-| [`social-creator-routing`](skills/social-creator-routing/SKILL.md) | Video and social media creators | **59%** | **73%** |
-| [`support-success-routing`](skills/support-success-routing/SKILL.md) | Support and customer success | **54%** | **73%** |
-| [`vibe-coder-routing`](skills/vibe-coder-routing/SKILL.md) | Indie hackers and AI-assisted builders | **65%** | **68%** |
-| [`educator-creator-routing`](skills/educator-creator-routing/SKILL.md) | Teachers and course creators | **56%** | **67%** |
-| [`growth-marketer-routing`](skills/growth-marketer-routing/SKILL.md) | Marketers, SEO and growth | **55%** | **65%** |
-| [`job-seeker-routing`](skills/job-seeker-routing/SKILL.md) | Job seekers and career changers | **54%** | **62%** |
-| [`designer-routing`](skills/designer-routing/SKILL.md) | UX and UI designers | **55%** | **60%** |
-| [`product-strategy-routing`](skills/product-strategy-routing/SKILL.md) | Product managers and founders | **43%** | **57%** |
-| [`writer-editor-routing`](skills/writer-editor-routing/SKILL.md) | Writers, newsletter authors, editors | **45%** | **56%** |
-| **Average** | 13 personas | **55%** | **69%** |
-<!-- SAVINGS:END -->
+Not sure which persona? Pick the one whose most frequent task matches yours; you can install several. The four overlays (`cheap-batch-mode`, `judge-best-output`, `high-stakes-review`, `context-diet`) work with any persona.
 
-Shared foundation and overlays:
+## Platforms
 
-| Skill | What it does |
-|---|---|
-| [`base-model-routing`](skills/base-model-routing/SKILL.md) | The tier ladder, scoring rubric, escalation rules and brief template every persona skill extends |
-| [`cheap-batch-mode`](skills/cheap-batch-mode/SKILL.md) | Bulk jobs: sample, script first, Haiku in chunks, rerun failures only |
-| [`judge-best-output`](skills/judge-best-output/SKILL.md) | Generate variants cheaply, let Opus rank and pick the winner |
-| [`high-stakes-review`](skills/high-stakes-review/SKILL.md) | Forces an Opus review before anything public, irreversible or regulated ships |
-| [`context-diet`](skills/context-diet/SKILL.md) | Cuts input tokens: scope, summarise once, compact, cache-friendly prefixes |
+| Platform | Tools covered | T1 → T3 models | Avg cost saved | Avg tokens saved | Guide |
+|---|---|---|---:|---:|---|
+| **Anthropic** | Claude Code, Claude.ai, Claude API | Claude Haiku 5.5 → Claude Sonnet 5.5 → Claude Opus 5.5 | **69%** | 55% | [Install guide](platforms/anthropic/README.md) |
+| **OpenAI** | Codex (CLI, IDE, app), ChatGPT, OpenAI API | GPT-6 Luna → GPT-6.1 Sol (low effort) → GPT-6.1 Sol | **61%** | 56% | [Install guide](platforms/openai/README.md) |
+| **Google** | Gemini CLI, Gemini API and Managed Agents | Gemini 3.1 Flash-Lite → Gemini 3.8 Flash → Gemini 4 Argon | **72%** | 55% | [Install guide](platforms/google/README.md) |
+| **DeepSeek** | DeepSeek Harness, Claude Code or Codex on the DeepSeek API, DeepSeek API | DeepSeek V4.1 Flash (non-thinking) → DeepSeek V4.1 Flash (thinking) → DeepSeek V4 Pro | **74%** | 55% | [Install guide](platforms/deepseek/README.md) |
+| **Qwen** | Qwen Code, Model Studio API | Qwen3.7-Flash → Qwen3.7-Plus → Qwen3.8-Max | **78%** | 55% | [Install guide](platforms/qwen/README.md) |
+| **Perplexity** | Perplexity Computer, Perplexity Agent API | GPT-6 Luna → Gemini 3.8 Flash → Claude Opus 5.5 | **76%** | 55% | [Install guide](platforms/perplexity/README.md) |
 
-## Install
+Each platform guide lists its model tiers, verified prices, install steps for every tool, and downloads.
 
-### Claude Code (automatic model switching)
+## How it works
 
-```bash
-git clone https://github.com/UtpalDasLabs/token-saver-skills.git
-cd token-saver-skills
-./install.sh                      # all skills + subagents into ~/.claude
-./install.sh vibe-coder-routing   # or just the base, overlays and one persona
-```
+Every skill uses the same five-step ladder, mapped to each platform's models:
 
-This copies the skills to `~/.claude/skills/` and three subagents to `~/.claude/agents/`: `micro-worker` (Haiku, low effort), `standard-worker` (Sonnet, medium) and `strong-reviewer` (Opus, high). The skills tell the main session to delegate down to them. Check with `/skills` and `/agents`.
+| Tier | Role | Anthropic | OpenAI | Google | DeepSeek | Qwen | Perplexity |
+|---|---|---|---|---|---|---|---|
+| **T0** | Scripts and tools, no model | — | — | — | — | — | — |
+| **T1** | Micro: tag, extract, summarise | Haiku 5.5 | GPT-6 Luna | Gemini 3.1 Flash-Lite | V4.1 Flash | Qwen3.7-Flash | GPT-6 Luna |
+| **T2** | Standard: production from a clear spec | Sonnet 5.5 | GPT-6.1 Sol (low effort) | Gemini 3.8 Flash | V4.1 Flash (thinking) | Qwen3.7-Plus | Gemini 3.8 Flash |
+| **T3** | Strong: judgement, strategy, review | Opus 5.5 | GPT-6.1 Sol | Gemini 4 Argon | V4 Pro | Qwen3.8-Max | Claude Opus 5.5 |
+| **T4** | Frontier: rare, high stakes | Fable 5.1 | GPT-6 Astra | Argon (high thinking) | V4 Pro (max effort) | Qwen3.8-Max (thinking) | Claude Fable 5.1 |
 
-### Claude.ai
+The strong model thinks; the mid model produces; the small model and scripts do the chores. Escalate one tier at a time, only after a check fails. Anything public, irreversible or "which option is best" starts at T3.
 
-Download a skill zip from the [`dist/` folder](dist) (for example [`social-creator-routing.zip`](dist/social-creator-routing.zip), plus [`base-model-routing.zip`](dist/base-model-routing.zip)), then upload it under **Customize → Skills → + → Upload a skill**. In chat, the skill prints a routing plan and tells you which model to switch to for each step.
-
-### API and agent frameworks
-
-[`routing.json`](routing.json) holds every persona's routing table with tier → model ID mapping. Load it in your router and pick the model per task type.
-
-### Any other Agent Skills host
-
-Each folder in `skills/` is a standard `SKILL.md` skill. Copy or zip the folder as your host expects.
-
-## What a skill does in practice
-
-Ask: "Turn my 25-minute YouTube video into 5 Reels with captions and hashtags, and tell me which to post first." With `social-creator-routing` loaded, the agent plans before it spends:
+**What a skill does in practice.** Ask: "Turn my 25-minute video into 5 Reels with captions and hashtags, and tell me which to post first." With `social-creator-routing` loaded, the agent plans before it spends:
 
 ```text
 ROUTING PLAN
-1. [T1] haiku/low      Clean transcript, keep timestamps
-2. [T1] haiku/low      Summarise into 12 key moments with timestamps
-3. [T2] sonnet/medium  Draft 5 Reels: in/out times, hook, on-screen text
-4. [T2] sonnet/low     3 caption variants per Reel
-5. [T1] haiku/low      Hashtags + alt text per Reel (batch of 5)
-6. [T3] opus/medium    Rank the 5 Reels and pick the first to post, with reason
-7. [T0] script         Rename clip files, build upload CSV
+1. [T1] haiku/low       Clean transcript, keep timestamps
+2. [T1] haiku/low       Summarise into 12 key moments with timestamps
+3. [T2] sonnet/medium   Draft 5 Reels: in/out times, hook, on-screen text
+4. [T2] sonnet/low      3 caption variants per Reel
+5. [T1] haiku/low       Hashtags + alt text per Reel (batch of 5)
+6. [T3] opus/medium     Rank the 5 Reels and pick the first to post, with reason
+7. [T0] script          Rename clip files, build upload CSV
 ```
+
+On OpenAI the same plan reads `luna/low`, `sol/medium`; on Qwen `flash/low`, `plus/medium`, `max/medium`; and so on.
+
+## Install
+
+```bash
+git clone https://github.com/UtpalDasLabs/token-saver-automated-model-picker.git
+cd token-saver-automated-model-picker
+./install.sh <platform> [--tool <tool>] [persona-skill ...]
+```
+
+| You use | Command | Where it installs | Model switching |
+|---|---|---|---|
+| Claude Code | `./install.sh anthropic` | `~/.claude/skills`, `~/.claude/agents` | Automatic (subagents pin `haiku`/`sonnet`/`opus`) |
+| Claude.ai | Upload a zip from `dist/anthropic/` | Customize → Skills | Skill tells you which model to pick |
+| Codex | `./install.sh openai` | `~/.agents/skills`, `~/.codex/agents` | Automatic (custom agents pin model + reasoning effort) |
+| ChatGPT | Add a zip from `dist/openai/` | Skills | Skill tells you which model to pick |
+| Gemini CLI | `./install.sh google` | `~/.gemini/skills`, `~/.gemini/agents` | Automatic (subagents pin `model`) |
+| Qwen Code | `./install.sh qwen` | `~/.qwen/skills`, `~/.qwen/agents` | Automatic (subagents pin `model`) |
+| DeepSeek Harness | `./install.sh deepseek` | `~/.agents/skills` | Routing plan |
+| Claude Code on the DeepSeek API | `./install.sh deepseek --tool claude-code` | `~/.claude/skills`, `~/.claude/agents` | Automatic (`deepseek-flash` / `deepseek-v4-pro`) |
+| Perplexity Computer | Plugins → Add custom → Import plugin from GitHub → paste `https://github.com/UtpalDasLabs/token-saver-automated-model-picker/tree/main/dist/perplexity/plugin` | Your plugins | Routing plan |
+| Any API / agent framework | Read [`routing.json`](routing.json) | — | Your code picks the model per task |
+
+Always install `base-model-routing` with a persona; the installer does this for you.
 
 ## Where the savings come from
 
-1. **Routing**: most weekly tasks are routine. Moving them from Opus to Sonnet (half the price) or Haiku (1/40) is where the cost saving comes from. It holds up even in the pessimistic case.
-2. **Context diet**: sending a worker 5k tokens of relevant context instead of 40k of conversation is where the token saving comes from. It depends on discipline, which is why the pessimistic number is much lower.
-3. **No model at all**: renames, link checks, CSV cleanup and arithmetic run as scripts.
+1. **Routing** — most weekly tasks are routine. Moving them to a model that costs a fraction of the flagship is where the cost saving comes from. It holds up in the pessimistic case.
+2. **Context diet** — sending a worker 5k tokens of relevant context instead of 40k of conversation is where the token saving comes from. It depends on discipline, which is why the pessimistic number is much lower.
+3. **No model at all** — renames, link checks, CSV cleanup and arithmetic run as scripts.
 
-Not counted, and stacking on top: prompt caching (cache reads cost 5% of input on Opus 5.5 and Sonnet 5.5) and the Batch API (50% off for work that can wait).
+The size of the saving depends on the price gap inside each platform. Qwen and Perplexity save the most because their small models are very cheap relative to their strong ones; OpenAI saves the least because its mid tier is the same model at lower effort. Prompt caching, batch and off-peak discounts are not counted and stack on top.
 
 ## Measure your own
 
-The numbers above come from modeled weekly workloads in [`data/personas/`](data/personas). Edit the task counts and token sizes to match your week, then:
+The numbers come from modeled weekly workloads in [`data/personas/`](data/personas) and verified list prices in [`data/platforms/`](data/platforms). Edit them to match your week:
 
 ```bash
 pip install pyyaml
-python3 benchmarks/calculate.py   # prints savings, writes benchmarks/RESULTS.md
-python3 tools/build.py            # regenerates the skills and this table
+python3 benchmarks/calculate.py   # recompute savings
+python3 tools/build.py            # regenerate every skill, package, guide and this README
+python3 tools/chart.py            # redraw the chart
 ```
 
-For real numbers, run the same week of work with and without the skill and compare your [Claude Console](https://platform.claude.com) usage. PRs with measured results are very welcome.
+For real numbers, run the same week with and without the skill and compare your provider's usage dashboard. PRs with measured before/after results are very welcome.
 
 ## Repo layout
 
 ```text
-skills/            18 Agent Skills (SKILL.md each)
-agents/            Claude Code subagents for T1, T2, T3
-data/personas/     Workload + routing data per persona (single source of truth)
-benchmarks/        Pricing, assumptions, calculator, results
-routing.json       Machine-readable routing tables
-install.sh         Claude Code installer
-dist/              Ready-to-upload zips for Claude.ai (run tools/package.sh to rebuild)
+skills/<platform>/<skill>/SKILL.md   108 generated skills (18 per platform)
+agents/<platform>/<tool>/            worker agents: Claude Code, Codex, Gemini CLI, Qwen Code
+platforms/<platform>/README.md       install guide + savings per persona
+dist/<platform>/*.zip                ready-to-upload zips (+ Perplexity plugin)
+data/personas/*.yaml                 13 persona workloads and routing tables
+data/platforms/*.yaml                6 platforms: tiers, models, prices, tools
+templates/                           base skill, overlays, workers, this README
+benchmarks/                          assumptions, calculator, results
+routing.json                         machine-readable tiers + routing tables
 ```
 
 ## Contributing
 
-Add a persona by copying a file in `data/personas/`, running the two commands above, and opening a PR. Keep task counts realistic and explain any change to the assumptions.
+Add a persona (copy a file in `data/personas/`) or a platform (copy a file in `data/platforms/`), run the three commands above, and open a PR. Keep task counts realistic, cite official price pages, and explain any change to the assumptions.
 
 ## Licence
 
-MIT. Prices change; re-check [Anthropic's pricing page](https://platform.claude.com/docs/en/about-claude/pricing) before quoting numbers.
+MIT © Utpal Das. Built in [Labs](https://utpaldas.com/labs/token-saver). Prices change; every platform file links its official pricing page — re-check before quoting numbers.

@@ -2,7 +2,7 @@ name: designer-routing
 who: "UX and UI designers"
 title: Designer routing
 persona: Product, UX and UI designers working in Figma, design systems and prototypes, often handing off to AI coding tools.
-purpose: Design judgement and critique stay on Opus; specs, microcopy, token tables and handoff notes go down the ladder.
+purpose: Design judgement and critique stay on {T3}; specs, microcopy, token tables and handoff notes go down the ladder.
 win: Clearer design decisions and cleaner handoffs, with model spend focused on critique rather than paperwork.
 description: "Model routing for UX and UI design: which tier does design critique, flows, UX research synthesis, microcopy, design tokens, component specs, accessibility checks and dev handoff notes. Use for Figma, prototyping or design-system work. Not for writing production code."
 sessions_per_week: 10
@@ -30,8 +30,8 @@ tool_first:
   - Token export with Style Dictionary or the Figma variables export.
   - Asset renaming and export presets in Figma itself.
 anti_patterns:
-  - Opus writing 30 button labels.
-  - Haiku critiquing a flow.
+  - "{T3} writing 30 button labels."
+  - "{T1} critiquing a flow."
   - Sending screenshots of every screen when one flow diagram would do.
 handoff_tip: "Brief T2 with the component name, states, token names and 'table only'."
 example:

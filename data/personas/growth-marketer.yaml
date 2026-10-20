@@ -2,7 +2,7 @@ name: growth-marketer-routing
 who: "Marketers, SEO and growth"
 title: Growth marketer routing
 persona: Performance and content marketers, SEO specialists and growth leads running campaigns, ads, email and landing pages.
-purpose: Strategy, positioning and the final pick live on Opus; volume of variants, briefs and SEO plumbing runs on Sonnet, Haiku and scripts.
+purpose: Strategy, positioning and the final pick live on {T3}; volume of variants, briefs and SEO plumbing runs on {T2}, {T1} and scripts.
 win: More tested variants and campaigns shipped per week at a lower cost per winning asset.
 description: "Model routing for marketing and growth: which tier does positioning, campaign strategy, ad copy variants, landing pages, email sequences, SEO briefs, keyword clustering and reporting. Use for campaigns, ads, SEO or lifecycle email. Not for organic social video production."
 sessions_per_week: 12
@@ -31,8 +31,8 @@ tool_first:
   - Character counts for ads and meta tags with formulas.
   - Pulling performance numbers via export or API, not by asking a model to read screenshots.
 anti_patterns:
-  - Opus writing 40 headline variants.
-  - Haiku choosing which ad to scale.
+  - "{T3} writing 40 headline variants."
+  - "{T1} choosing which ad to scale."
   - Re-explaining the brand in every prompt instead of a cached brand card.
 handoff_tip: "Brief T2 with the brand card, the audience, the platform limits and 'N numbered variants, no commentary'."
 example:

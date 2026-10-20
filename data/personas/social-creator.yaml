@@ -2,7 +2,7 @@ name: social-creator-routing
 who: "Video and social media creators"
 title: Social creator routing
 persona: Short-form video creators, YouTubers, TikTok, Reels and LinkedIn creators who script, film, cut and repurpose content every week.
-purpose: Use premium models to decide the message and cheaper models to multiply the format. Strategy and hooks on Opus, production on Sonnet, metadata on Haiku and scripts.
+purpose: Use premium models to decide the message and cheaper models to multiply the format. Strategy and hooks on {T3}, production on {T2}, metadata on {T1} and scripts.
 win: More publishable posts per week at the same or lower AI spend, with hooks that hold attention.
 description: "Model routing for social media and video creators: which tier writes scripts, hooks, captions, cutdowns, thumbnails text, hashtags and content calendars. Use when planning, producing or repurposing posts, shorts, reels or videos. Not for paid ad campaigns or SEO."
 sessions_per_week: 15
@@ -34,7 +34,7 @@ tool_first:
   - Link-in-bio and URL checks with `curl -I`.
   - Subtitle format conversion (SRT/VTT) with ffmpeg or a converter.
 anti_patterns:
-  - Asking Opus for 50 hashtags.
+  - Asking {T3} for 50 hashtags.
   - Letting a cheap model choose which hook to post.
   - Re-sending the full 40-minute transcript for each short.
 handoff_tip: "Brief T2 with the voice card, the platform, the length limit, the hook to keep, and 'numbered variants, no commentary'."

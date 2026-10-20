@@ -1,0 +1,32 @@
+id: qwen
+name: Qwen
+product: Qwen (Alibaba Cloud Model Studio)
+order: 5
+checked: "2026-10-20"
+source: "https://www.alibabacloud.com/help/en/model-studio/model-pricing"
+baseline_tier: T3
+baseline_effort: medium
+tiers:
+  T1: {model: qwen3.7-flash, short: flash, label: "Qwen3.7-Flash", prices: [{upto_k: 32, input: 0.03, output: 0.13}, {upto_k: 256, input: 0.10, output: 0.40}]}
+  T2: {model: qwen3.7-plus, short: plus, label: "Qwen3.7-Plus", prices: [{upto_k: null, input: 0.40, output: 1.60}]}
+  T3: {model: qwen3.8-max, short: max, label: "Qwen3.8-Max", prices: [{upto_k: null, input: 2.00, output: 6.00}]}
+  T4: {model: qwen3.8-max, short: max-think, label: "Qwen3.8-Max (thinking)", force_effort: high, prices: [{upto_k: null, input: 2.00, output: 6.00}]}
+context_rule: "Qwen3.7-Flash costs about 3x more per token above 32k input tokens. Keep T1 prompts under 32k."
+price_notes:
+  - "International deployment list prices. Qwen3.7-Flash costs about 3x more per token above 32k input tokens; keep T1 prompts under 32k."
+  - "Limited-time discounts (for example 20% off Qwen3.7-Plus) are not counted."
+default_tool: qwen-code
+tools:
+  - id: qwen-code
+    name: Qwen Code
+    auto: true
+    skills_dir: "~/.qwen/skills"
+    agents_dir: "~/.qwen/agents"
+    agent_format: qwen
+    how: "Skills go in `~/.qwen/skills/`, the three worker subagents in `~/.qwen/agents/`. Each subagent pins its own `model`, so delegated work runs on Qwen3.7-Flash or Qwen3.7-Plus."
+    doc: "https://qwenlm.github.io/qwen-code-docs/en/users/features/sub-agents/"
+  - id: api
+    name: Model Studio API
+    auto: true
+    how: "Load `routing.json` and call the tier's model; turn thinking on only for T3 judgement and T4."
+    doc: "https://www.alibabacloud.com/help/en/model-studio/model-pricing"

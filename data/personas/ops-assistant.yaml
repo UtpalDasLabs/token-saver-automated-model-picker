@@ -2,7 +2,7 @@ name: ops-assistant-routing
 who: "VAs, ops and chiefs of staff"
 title: Ops assistant routing
 persona: Virtual assistants, operations managers, chiefs of staff and admins running sheets, inboxes, files, uploads and recurring admin.
-purpose: Most ops work is rules, not judgement. Push it to scripts and Haiku, keep Sonnet for drafting and Opus for the rare exception.
+purpose: Most ops work is rules, not judgement. Push it to scripts and {T1}, keep {T2} for drafting and {T3} for the rare exception.
 win: Admin done on time with near-zero AI spend and no silent data errors.
 description: "Model routing for operations and admin work: which tier handles spreadsheets, CSV cleanup, file renaming, inbox triage, scheduling, data entry, uploads and recurring reports. Use for bulk admin, VA or chief-of-staff tasks. Not for financial analysis or strategy."
 sessions_per_week: 15
@@ -33,7 +33,7 @@ tool_first:
   - Totals and reconciliation with formulas; the model only explains differences.
 anti_patterns:
   - Asking any model to "clean up this spreadsheet" when a formula would do it exactly.
-  - Opus drafting "thanks, received" replies.
+  - "{T3} drafting \"thanks, received\" replies."
   - Bulk-sending model-drafted emails without a T3 check on sensitive ones.
 handoff_tip: "Brief T1 with the label list, 3 labelled examples, 'one line per row, ID first', and 'UNSURE if unclear'."
 example:

@@ -2,7 +2,7 @@ name: educator-creator-routing
 who: "Teachers and course creators"
 title: Educator and course creator routing
 persona: Teachers, tutors, course creators and education YouTubers building lessons, quizzes, flashcards and study apps.
-purpose: Curriculum design and fact accuracy deserve Opus. Generating hundreds of questions, flashcards and translations is volume work for cheaper tiers, with a strong check on correctness.
+purpose: Curriculum design and fact accuracy deserve {T3}. Generating hundreds of questions, flashcards and translations is volume work for cheaper tiers, with a strong check on correctness.
 win: Accurate learning material at scale, produced at a fraction of the cost, with zero factual errors shipped.
 description: "Model routing for teaching and course creation: which tier designs curricula, writes lessons, generates quizzes and flashcards, translates material, checks answers and creates video scripts for education. Use for lessons, courses, exam prep or study apps. Not for marketing the course."
 sessions_per_week: 10
@@ -30,7 +30,7 @@ tool_first:
   - Export to CSV, Anki or JSON with a converter.
   - Text-to-speech and reading-level scores with tools.
 anti_patterns:
-  - Generating 500 questions on Opus.
+  - Generating 500 questions on {T3}.
   - Publishing generated exam answers without a T3 source check.
   - Translating without a glossary, so terms drift.
 handoff_tip: "Brief T2 with the objective, level, source excerpt, schema and 'exactly one correct option'."

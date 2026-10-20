@@ -2,7 +2,7 @@ name: support-success-routing
 who: "Support and customer success"
 title: Support and success routing
 persona: Customer support agents, support leads and customer success managers handling tickets, help docs and account health.
-purpose: Most tickets are routine and answerable from docs. Let Haiku triage and Sonnet draft; keep Opus for escalations, churn risks and policy calls.
+purpose: Most tickets are routine and answerable from docs. Let {T1} triage and {T2} draft; keep {T3} for escalations, churn risks and policy calls.
 win: Faster, accurate replies at lower cost per resolved ticket, with no risky answers sent unchecked.
 description: "Model routing for customer support and success: which tier triages tickets, drafts replies from help docs, summarises threads, writes macros and help articles, flags churn risk and handles escalations. Use for support queues or account management. Not for sales outreach."
 sessions_per_week: 20
@@ -30,8 +30,8 @@ tool_first:
   - Ticket counts and trends from the helpdesk export.
   - Order or account lookups via API, not by asking the model to guess.
 anti_patterns:
-  - Opus answering "how do I reset my password".
-  - Haiku replying to a refund dispute.
+  - "{T3} answering \"how do I reset my password\"."
+  - "{T1} replying to a refund dispute."
   - Sending drafted replies that cite no source doc.
 handoff_tip: "Brief T2 with the relevant doc excerpts, the policy card, the customer's last message and 'cite the doc, max 120 words'."
 example:

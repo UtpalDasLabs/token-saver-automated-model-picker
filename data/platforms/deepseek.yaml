@@ -1,0 +1,38 @@
+id: deepseek
+name: DeepSeek
+product: DeepSeek V4
+order: 4
+checked: "2026-10-20"
+source: "https://api-docs.deepseek.com/quick_start/pricing"
+baseline_tier: T3
+baseline_effort: medium
+tiers:
+  T1: {model: deepseek-flash, short: flash, label: "DeepSeek V4.1 Flash (non-thinking)", prices: [{upto_k: null, input: 0.30, output: 1.20}]}
+  T2: {model: deepseek-flash, short: flash-think, label: "DeepSeek V4.1 Flash (thinking)", prices: [{upto_k: null, input: 0.30, output: 1.20}]}
+  T3: {model: deepseek-v4-pro, short: v4-pro, label: "DeepSeek V4 Pro", prices: [{upto_k: null, input: 1.32, output: 3.96}]}
+  T4: {model: deepseek-v4-pro, short: v4-pro-max, label: "DeepSeek V4 Pro (max effort)", force_effort: high, prices: [{upto_k: null, input: 1.32, output: 3.96}]}
+context_rule: "Use off-peak hours (half price) for big batch jobs that can wait."
+price_notes:
+  - "Calculated at peak-hour prices. Off-peak prices are half, which lowers both sides equally and does not change the percentages."
+  - "DeepSeek has no model above V4 Pro, so T4 means V4 Pro at maximum reasoning effort. For the rarest, highest-stakes calls, a second opinion from another provider is a reasonable T4."
+default_tool: deepseek-harness
+tools:
+  - id: deepseek-harness
+    name: DeepSeek Harness
+    auto: false
+    skills_dir: "~/.agents/skills"
+    how: "Skills go in `~/.agents/skills/` (or `.dsh/skills/` in a project). The skill writes a routing plan and keeps cheap steps on Flash with small context."
+    doc: "https://deepseek-harness.github.io/deepseek-harness/en/reference/subsystems/skills"
+  - id: claude-code
+    name: Claude Code or Codex on the DeepSeek API
+    auto: true
+    skills_dir: "~/.claude/skills"
+    agents_dir: "~/.claude/agents"
+    agent_format: claude
+    how: "DeepSeek's API supports the Anthropic and OpenAI interfaces, so Claude Code and Codex can run on it. Install with `--tool claude-code`: the worker subagents pin `deepseek-flash` and `deepseek-v4-pro`."
+    doc: "https://api-docs.deepseek.com/updates/"
+  - id: api
+    name: DeepSeek API
+    auto: true
+    how: "Load `routing.json` and call `deepseek-flash` (thinking off for T1, on for T2) or `deepseek-v4-pro`."
+    doc: "https://api-docs.deepseek.com/quick_start/pricing"
