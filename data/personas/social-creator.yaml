@@ -1,0 +1,51 @@
+name: social-creator-routing
+who: "Video and social media creators"
+title: Social creator routing
+persona: Short-form video creators, YouTubers, TikTok, Reels and LinkedIn creators who script, film, cut and repurpose content every week.
+purpose: Use premium models to decide the message and cheaper models to multiply the format. Strategy and hooks on Opus, production on Sonnet, metadata on Haiku and scripts.
+win: More publishable posts per week at the same or lower AI spend, with hooks that hold attention.
+description: "Model routing for social media and video creators: which tier writes scripts, hooks, captions, cutdowns, thumbnails text, hashtags and content calendars. Use when planning, producing or repurposing posts, shorts, reels or videos. Not for paid ad campaigns or SEO."
+sessions_per_week: 15
+tasks:
+  - {task: "Content strategy, series angle, positioning", tier: T3, effort: medium, per_week: 1, base_in_k: 40, routed_in_k: 20, out_k: 4, p_fail: 0.05, check: "3 angles with audience, promise, proof", escalate: "Niche or audience is unclear"}
+  - {task: "Pick the strongest hook from variants", tier: T3, effort: medium, per_week: 5, base_in_k: 12, routed_in_k: 5, out_k: 1, p_fail: 0.05, check: "Ranked top 3 with reasons", escalate: "Never above T3"}
+  - {task: "Write a full video script from an outline", tier: T2, effort: medium, per_week: 5, base_in_k: 20, routed_in_k: 8, out_k: 3, p_fail: 0.08, check: "Timed to target length, one CTA", escalate: "Topic needs facts or claims verified -> T3 review"}
+  - {task: "Generate hook, title and caption variants", tier: T2, effort: low, per_week: 15, base_in_k: 15, routed_in_k: 3, out_k: 1.2, p_fail: 0.05, check: "Length limits per platform", escalate: "Never; judging goes to T3"}
+  - {task: "Repurpose long video into 5 shorts", tier: T2, effort: medium, per_week: 4, base_in_k: 60, routed_in_k: 15, out_k: 4, p_fail: 0.10, check: "Each short has timestamp in/out, hook, caption", escalate: "Transcript is messy or multilingual -> T1 clean first"}
+  - {task: "Clean subtitles / transcript", tier: T1, effort: low, per_week: 8, base_in_k: 25, routed_in_k: 10, out_k: 6, p_fail: 0.08, check: "Timestamps preserved, no words dropped", escalate: "Heavy dialect or code-switching -> T2"}
+  - {task: "Hashtags, keywords, alt text", tier: T1, effort: low, per_week: 20, base_in_k: 10, routed_in_k: 1.5, out_k: 0.3, p_fail: 0.05, check: "Count and banned-tag list", escalate: "Never"}
+  - {task: "Thumbnail text and image prompt variants", tier: T2, effort: low, per_week: 5, base_in_k: 10, routed_in_k: 2, out_k: 0.8, p_fail: 0.05, check: "Max 4 words of overlay text", escalate: "Pick the winner on T3"}
+  - {task: "Content calendar CSV and upload sheet", tier: T2, effort: low, per_week: 2, base_in_k: 20, routed_in_k: 5, out_k: 3, p_fail: 0.05, check: "CSV validates against column schema", escalate: "Never"}
+  - {task: "Reply drafts to comments", tier: T1, effort: low, per_week: 10, base_in_k: 8, routed_in_k: 2, out_k: 0.5, p_fail: 0.05, check: "Tone list, no promises", escalate: "Complaint, legal or brand-safety risk -> T3"}
+  - {task: "Rename clips, check links, file housekeeping", tier: T0, effort: "-", per_week: 6, base_in_k: 10, routed_in_k: 1.5, out_k: 0.3, p_fail: 0.02, check: "Script output", escalate: "Never"}
+  - {task: "Analyse last week's performance", tier: T3, effort: medium, per_week: 1, base_in_k: 30, routed_in_k: 10, out_k: 2, p_fail: 0.05, check: "3 actionable insights tied to numbers", escalate: "Never above T3"}
+escalate_now:
+  - Brand deals, sponsored claims, health, finance or legal topics.
+  - A reply to a public complaint or a creator conflict.
+  - Changing the channel's positioning or series format.
+context_diet:
+  - Give caption workers the 3-line summary and the hook, not the full transcript.
+  - Summarise long transcripts once on T1 with timestamps; repurposing works from that.
+  - Keep a stable voice card (tone, banned words, CTA style, emoji rules) as the first block of every brief.
+  - Paste performance numbers as a small table, not screenshots of analytics dashboards.
+tool_first:
+  - Clip renaming and folder sorting with a script (date_platform_topic_v1.mp4).
+  - Character counts and hashtag limits with a formula, not a model.
+  - Link-in-bio and URL checks with `curl -I`.
+  - Subtitle format conversion (SRT/VTT) with ffmpeg or a converter.
+anti_patterns:
+  - Asking Opus for 50 hashtags.
+  - Letting a cheap model choose which hook to post.
+  - Re-sending the full 40-minute transcript for each short.
+handoff_tip: "Brief T2 with the voice card, the platform, the length limit, the hook to keep, and 'numbered variants, no commentary'."
+example:
+  request: "Turn my 25-minute YouTube video into 5 Reels with captions and hashtags, and tell me which to post first."
+  plan: |
+    ROUTING PLAN
+    1. [T1] haiku/low      Clean transcript, keep timestamps
+    2. [T1] haiku/low      Summarise into 12 key moments with timestamps
+    3. [T2] sonnet/medium  Draft 5 Reels: in/out times, hook, on-screen text
+    4. [T2] sonnet/low     3 caption variants per Reel
+    5. [T1] haiku/low      Hashtags + alt text per Reel (batch of 5)
+    6. [T3] opus/medium    Rank the 5 Reels and pick the first to post, with reason
+    7. [T0] script         Rename clip files, build upload CSV

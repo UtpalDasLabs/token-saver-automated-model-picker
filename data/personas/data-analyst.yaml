@@ -1,0 +1,46 @@
+name: data-analyst-routing
+who: "Data and BI analysts"
+title: Data analyst routing
+persona: Data and BI analysts, analytics engineers and spreadsheet power users writing SQL, notebooks, dashboards and reports.
+purpose: Let the database and code do the maths. Models write queries, explain results and decide what matters; Opus only for the interpretation and tricky modelling.
+win: Correct numbers, explained clearly, with model spend that does not scale with table size.
+description: "Model routing for data analysis: which tier writes SQL, pandas or spreadsheet formulas, cleans data, builds charts and dashboards, explains anomalies and writes insight summaries. Use for querying, analysing or reporting on data. Not for qualitative research synthesis."
+sessions_per_week: 12
+tasks:
+  - {task: "Frame the analysis and metric definitions", tier: T3, effort: medium, per_week: 1, base_in_k: 20, routed_in_k: 8, out_k: 1.5, p_fail: 0.05, check: "Question, metric formulas, cuts", escalate: "Never above T3"}
+  - {task: "Write SQL from a clear question", tier: T2, effort: low, per_week: 12, base_in_k: 25, routed_in_k: 5, out_k: 0.8, p_fail: 0.10, check: "Query runs, row counts sane", escalate: "Wrong twice or complex joins -> T3"}
+  - {task: "Debug a wrong number", tier: T3, effort: medium, per_week: 2, base_in_k: 40, routed_in_k: 12, out_k: 1.5, p_fail: 0.10, check: "Reconciles to a trusted total", escalate: "Never above T3"}
+  - {task: "Data cleaning script", tier: T2, effort: low, per_week: 3, base_in_k: 30, routed_in_k: 5, out_k: 1.5, p_fail: 0.08, check: "Assertions on nulls, types, counts", escalate: "Never"}
+  - {task: "Run transforms and aggregations", tier: T0, effort: "-", per_week: 15, base_in_k: 50, routed_in_k: 1.5, out_k: 0.3, p_fail: 0.02, check: "Code output", escalate: "Never: models never do arithmetic on raw rows"}
+  - {task: "Chart and dashboard code", tier: T2, effort: low, per_week: 4, base_in_k: 20, routed_in_k: 5, out_k: 1.5, p_fail: 0.08, check: "Renders, axes labelled", escalate: "Never"}
+  - {task: "Classify free-text fields", tier: T1, effort: low, per_week: 4, base_in_k: 40, routed_in_k: 10, out_k: 2, p_fail: 0.08, check: "Label set only, UNSURE allowed", escalate: "UNSURE above 10% -> T2"}
+  - {task: "Explain results and write insights", tier: T3, effort: medium, per_week: 2, base_in_k: 30, routed_in_k: 6, out_k: 1.5, p_fail: 0.05, check: "Each insight cites a number", escalate: "Never above T3"}
+  - {task: "Document a table or query", tier: T1, effort: low, per_week: 5, base_in_k: 15, routed_in_k: 3, out_k: 0.5, p_fail: 0.05, check: "Column-by-column template", escalate: "Never"}
+  - {task: "Weekly KPI report text", tier: T2, effort: low, per_week: 1, base_in_k: 25, routed_in_k: 4, out_k: 0.8, p_fail: 0.05, check: "Numbers match query output", escalate: "Big swing -> T3"}
+escalate_now:
+  - Numbers going to executives, investors, regulators or customers.
+  - A metric definition change.
+  - Results that contradict a trusted dashboard.
+context_diet:
+  - Send the schema (table, column, type) and 5 sample rows, never full tables.
+  - Pass aggregated results to the insight step, not raw rows.
+  - Keep a stable metrics dictionary as the first block of every brief.
+tool_first:
+  - All arithmetic, joins, counts and aggregations in SQL, pandas or the spreadsheet.
+  - Profiling (nulls, distinct counts, ranges) with a profiling query.
+  - Chart rendering with code, not a model describing a chart.
+anti_patterns:
+  - Pasting 10,000 rows into a model and asking for the average.
+  - Opus writing a simple SELECT.
+  - Insights without the numbers they rest on.
+handoff_tip: "Brief T2 with the schema, the metric definition, the expected grain and 'SQL only, then the row count'."
+example:
+  request: "Why did conversion drop last week? Give me a short explanation for the leadership channel."
+  plan: |
+    ROUTING PLAN
+    1. [T3] opus/medium    Define conversion precisely + the cuts to check
+    2. [T2] sonnet/low     SQL for funnel by day, device, channel, country
+    3. [T0] database       Run queries
+    4. [T3] opus/medium    Find the driver; reconcile to the dashboard total
+    5. [T2] sonnet/low     Chart code for the driver
+    6. [T3] opus/medium    150-word explanation for leadership (high-stakes-review)

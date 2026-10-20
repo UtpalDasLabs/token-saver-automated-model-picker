@@ -1,0 +1,1151 @@
+{
+  "version": "1.0.0",
+  "pricing_checked": "2026-10-20",
+  "tiers": {
+    "T0": null,
+    "T1": "claude-haiku-5-5",
+    "T2": "claude-sonnet-5-5",
+    "T3": "claude-opus-5-5",
+    "T4": "claude-fable-5-1"
+  },
+  "personas": {
+    "data-analyst-routing": [
+      {
+        "task": "Frame the analysis and metric definitions",
+        "tier": "T3",
+        "effort": "medium",
+        "context_in_k": 8,
+        "check": "Question, metric formulas, cuts",
+        "escalate": "Never above T3"
+      },
+      {
+        "task": "Write SQL from a clear question",
+        "tier": "T2",
+        "effort": "low",
+        "context_in_k": 5,
+        "check": "Query runs, row counts sane",
+        "escalate": "Wrong twice or complex joins -> T3"
+      },
+      {
+        "task": "Debug a wrong number",
+        "tier": "T3",
+        "effort": "medium",
+        "context_in_k": 12,
+        "check": "Reconciles to a trusted total",
+        "escalate": "Never above T3"
+      },
+      {
+        "task": "Data cleaning script",
+        "tier": "T2",
+        "effort": "low",
+        "context_in_k": 5,
+        "check": "Assertions on nulls, types, counts",
+        "escalate": "Never"
+      },
+      {
+        "task": "Run transforms and aggregations",
+        "tier": "T0",
+        "effort": "-",
+        "context_in_k": 1.5,
+        "check": "Code output",
+        "escalate": "Never: models never do arithmetic on raw rows"
+      },
+      {
+        "task": "Chart and dashboard code",
+        "tier": "T2",
+        "effort": "low",
+        "context_in_k": 5,
+        "check": "Renders, axes labelled",
+        "escalate": "Never"
+      },
+      {
+        "task": "Classify free-text fields",
+        "tier": "T1",
+        "effort": "low",
+        "context_in_k": 10,
+        "check": "Label set only, UNSURE allowed",
+        "escalate": "UNSURE above 10% -> T2"
+      },
+      {
+        "task": "Explain results and write insights",
+        "tier": "T3",
+        "effort": "medium",
+        "context_in_k": 6,
+        "check": "Each insight cites a number",
+        "escalate": "Never above T3"
+      },
+      {
+        "task": "Document a table or query",
+        "tier": "T1",
+        "effort": "low",
+        "context_in_k": 3,
+        "check": "Column-by-column template",
+        "escalate": "Never"
+      },
+      {
+        "task": "Weekly KPI report text",
+        "tier": "T2",
+        "effort": "low",
+        "context_in_k": 4,
+        "check": "Numbers match query output",
+        "escalate": "Big swing -> T3"
+      }
+    ],
+    "designer-routing": [
+      {
+        "task": "Design critique and direction",
+        "tier": "T3",
+        "effort": "medium",
+        "context_in_k": 10,
+        "check": "Issues ranked by user impact",
+        "escalate": "Never above T3"
+      },
+      {
+        "task": "User flow and information architecture",
+        "tier": "T3",
+        "effort": "medium",
+        "context_in_k": 10,
+        "check": "Every state and edge case listed",
+        "escalate": "Never above T3"
+      },
+      {
+        "task": "Microcopy variants (buttons, errors, empty states)",
+        "tier": "T2",
+        "effort": "low",
+        "context_in_k": 2,
+        "check": "Length per component",
+        "escalate": "Pick on T3 for key screens"
+      },
+      {
+        "task": "Component spec and props table",
+        "tier": "T2",
+        "effort": "low",
+        "context_in_k": 5,
+        "check": "All variants and states covered",
+        "escalate": "Never"
+      },
+      {
+        "task": "Design tokens to JSON/CSS",
+        "tier": "T0",
+        "effort": "-",
+        "context_in_k": 1.5,
+        "check": "Token build passes",
+        "escalate": "Never"
+      },
+      {
+        "task": "Accessibility contrast and alt text checks",
+        "tier": "T0",
+        "effort": "-",
+        "context_in_k": 1.5,
+        "check": "WCAG contrast tool report",
+        "escalate": "Complex interaction a11y -> T3"
+      },
+      {
+        "task": "Alt text and image descriptions",
+        "tier": "T1",
+        "effort": "low",
+        "context_in_k": 2,
+        "check": "Under 125 characters",
+        "escalate": "Never"
+      },
+      {
+        "task": "Synthesise usability test notes",
+        "tier": "T2",
+        "effort": "medium",
+        "context_in_k": 12,
+        "check": "Issues with severity + count",
+        "escalate": "Contradictory findings -> T3"
+      },
+      {
+        "task": "Dev handoff notes",
+        "tier": "T2",
+        "effort": "low",
+        "context_in_k": 5,
+        "check": "Spacing, states, breakpoints listed",
+        "escalate": "Never"
+      },
+      {
+        "task": "Image-generation prompt variants",
+        "tier": "T1",
+        "effort": "low",
+        "context_in_k": 1.5,
+        "check": "Prompt template filled",
+        "escalate": "Choose winners on T3"
+      }
+    ],
+    "educator-creator-routing": [
+      {
+        "task": "Curriculum and learning objectives",
+        "tier": "T3",
+        "effort": "medium",
+        "context_in_k": 12,
+        "check": "Objectives map to official syllabus",
+        "escalate": "Never above T3"
+      },
+      {
+        "task": "Lesson draft from objectives",
+        "tier": "T2",
+        "effort": "medium",
+        "context_in_k": 8,
+        "check": "Covers each objective, level-appropriate",
+        "escalate": "Never"
+      },
+      {
+        "task": "Generate quiz questions and distractors",
+        "tier": "T2",
+        "effort": "low",
+        "context_in_k": 5,
+        "check": "One correct answer, schema valid",
+        "escalate": "Never"
+      },
+      {
+        "task": "Verify answers against the official source",
+        "tier": "T3",
+        "effort": "medium",
+        "context_in_k": 10,
+        "check": "Each answer has source reference",
+        "escalate": "Source unclear -> flag to the user"
+      },
+      {
+        "task": "Flashcards from a word or fact list",
+        "tier": "T1",
+        "effort": "low",
+        "context_in_k": 5,
+        "check": "Front/back schema, no duplicates",
+        "escalate": "Never"
+      },
+      {
+        "task": "Translate learning material",
+        "tier": "T2",
+        "effort": "low",
+        "context_in_k": 8,
+        "check": "Terms glossary respected",
+        "escalate": "Legal or exam wording -> T3"
+      },
+      {
+        "task": "Plain-language explanations",
+        "tier": "T2",
+        "effort": "low",
+        "context_in_k": 3,
+        "check": "Reading level check",
+        "escalate": "Never"
+      },
+      {
+        "task": "Grade or give feedback on student writing",
+        "tier": "T2",
+        "effort": "medium",
+        "context_in_k": 4,
+        "check": "Rubric criteria scored",
+        "escalate": "Disputed grade -> T3"
+      },
+      {
+        "task": "Educational video script",
+        "tier": "T2",
+        "effort": "medium",
+        "context_in_k": 6,
+        "check": "Timed, one concept per segment",
+        "escalate": "Never"
+      },
+      {
+        "task": "Dedupe, format, export question bank",
+        "tier": "T0",
+        "effort": "-",
+        "context_in_k": 1.5,
+        "check": "Schema + duplicate check",
+        "escalate": "Never"
+      }
+    ],
+    "growth-marketer-routing": [
+      {
+        "task": "Positioning and campaign strategy",
+        "tier": "T3",
+        "effort": "high",
+        "context_in_k": 20,
+        "check": "ICP, message, offer, channels, metrics",
+        "escalate": "Never above T3"
+      },
+      {
+        "task": "Ad copy variants",
+        "tier": "T2",
+        "effort": "low",
+        "context_in_k": 3,
+        "check": "Platform character limits",
+        "escalate": "Regulated claims -> T3"
+      },
+      {
+        "task": "Pick winners and plan the next test",
+        "tier": "T3",
+        "effort": "medium",
+        "context_in_k": 6,
+        "check": "Ranked with rationale + hypothesis",
+        "escalate": "Never above T3"
+      },
+      {
+        "task": "Landing page copy from a brief",
+        "tier": "T2",
+        "effort": "medium",
+        "context_in_k": 8,
+        "check": "Sections match wireframe, one CTA",
+        "escalate": "Offer unclear -> T3"
+      },
+      {
+        "task": "Email sequence drafts",
+        "tier": "T2",
+        "effort": "medium",
+        "context_in_k": 6,
+        "check": "Subject < 50 chars, one goal per mail",
+        "escalate": "Never"
+      },
+      {
+        "task": "Keyword clustering and intent tagging",
+        "tier": "T1",
+        "effort": "low",
+        "context_in_k": 12,
+        "check": "Every keyword in one cluster",
+        "escalate": "Clusters overlap heavily -> T2"
+      },
+      {
+        "task": "SEO content brief",
+        "tier": "T2",
+        "effort": "low",
+        "context_in_k": 8,
+        "check": "H2 outline, intent, entities",
+        "escalate": "Never"
+      },
+      {
+        "task": "Meta titles, descriptions, alt text",
+        "tier": "T1",
+        "effort": "low",
+        "context_in_k": 2,
+        "check": "Length limits by formula",
+        "escalate": "Never"
+      },
+      {
+        "task": "UTM links and tracking sheet",
+        "tier": "T0",
+        "effort": "-",
+        "context_in_k": 1.5,
+        "check": "URLs parse, params consistent",
+        "escalate": "Never"
+      },
+      {
+        "task": "Weekly campaign report",
+        "tier": "T2",
+        "effort": "low",
+        "context_in_k": 6,
+        "check": "Numbers match export",
+        "escalate": "Unexplained swing -> T3"
+      },
+      {
+        "task": "Competitor ad and message teardown",
+        "tier": "T3",
+        "effort": "medium",
+        "context_in_k": 12,
+        "check": "Angles, offers, gaps to exploit",
+        "escalate": "Never above T3"
+      }
+    ],
+    "job-seeker-routing": [
+      {
+        "task": "Career positioning and target-role story",
+        "tier": "T3",
+        "effort": "high",
+        "context_in_k": 15,
+        "check": "Headline, 3 proof points, target roles",
+        "escalate": "Never above T3"
+      },
+      {
+        "task": "Extract requirements from a job ad",
+        "tier": "T1",
+        "effort": "low",
+        "context_in_k": 3,
+        "check": "Must-have vs nice-to-have list",
+        "escalate": "Never"
+      },
+      {
+        "task": "Tailor CV bullets to the ad",
+        "tier": "T2",
+        "effort": "medium",
+        "context_in_k": 6,
+        "check": "Only facts from master CV",
+        "escalate": "Gap needs reframing -> T3"
+      },
+      {
+        "task": "Cover letter draft",
+        "tier": "T2",
+        "effort": "medium",
+        "context_in_k": 6,
+        "check": "Under 300 words, names the company's need",
+        "escalate": "Dream role -> T3 edit"
+      },
+      {
+        "task": "Company research brief",
+        "tier": "T2",
+        "effort": "low",
+        "context_in_k": 8,
+        "check": "5 facts with sources",
+        "escalate": "Never"
+      },
+      {
+        "task": "Interview question prep and STAR answers",
+        "tier": "T3",
+        "effort": "medium",
+        "context_in_k": 10,
+        "check": "Answers use real stories, under 2 minutes each",
+        "escalate": "Never above T3"
+      },
+      {
+        "task": "Mock interview feedback",
+        "tier": "T3",
+        "effort": "medium",
+        "context_in_k": 8,
+        "check": "3 fixes per answer",
+        "escalate": "Never above T3"
+      },
+      {
+        "task": "Follow-up and thank-you emails",
+        "tier": "T1",
+        "effort": "low",
+        "context_in_k": 2,
+        "check": "Under 120 words",
+        "escalate": "Negotiation -> T3"
+      },
+      {
+        "task": "Application tracker updates",
+        "tier": "T0",
+        "effort": "-",
+        "context_in_k": 1.5,
+        "check": "Sheet row added",
+        "escalate": "Never"
+      },
+      {
+        "task": "Salary negotiation prep",
+        "tier": "T3",
+        "effort": "high",
+        "context_in_k": 10,
+        "check": "Range, anchors, walk-away",
+        "escalate": "Never above T3"
+      }
+    ],
+    "ops-assistant-routing": [
+      {
+        "task": "Clean and normalise a CSV or sheet",
+        "tier": "T0",
+        "effort": "-",
+        "context_in_k": 2,
+        "check": "Row count unchanged, schema valid",
+        "escalate": "Messy free text -> T1 per column"
+      },
+      {
+        "task": "Categorise or tag rows",
+        "tier": "T1",
+        "effort": "low",
+        "context_in_k": 8,
+        "check": "Only allowed labels used",
+        "escalate": "More than 10% UNSURE -> T2"
+      },
+      {
+        "task": "Inbox triage and labelling",
+        "tier": "T1",
+        "effort": "low",
+        "context_in_k": 6,
+        "check": "Label + priority per email",
+        "escalate": "Legal, HR or money emails -> T3"
+      },
+      {
+        "task": "Draft routine email replies",
+        "tier": "T2",
+        "effort": "low",
+        "context_in_k": 3,
+        "check": "Under 120 words, facts from thread",
+        "escalate": "Sensitive or angry thread -> T3"
+      },
+      {
+        "task": "Rename and sort files",
+        "tier": "T0",
+        "effort": "-",
+        "context_in_k": 1.5,
+        "check": "Dry-run list approved",
+        "escalate": "Never"
+      },
+      {
+        "task": "Check links and uploads",
+        "tier": "T0",
+        "effort": "-",
+        "context_in_k": 1.5,
+        "check": "Status code report",
+        "escalate": "Never"
+      },
+      {
+        "task": "Extract fields from invoices or forms",
+        "tier": "T1",
+        "effort": "low",
+        "context_in_k": 4,
+        "check": "JSON schema + totals add up",
+        "escalate": "Handwritten or unclear scan -> T2"
+      },
+      {
+        "task": "Weekly ops report from data",
+        "tier": "T2",
+        "effort": "low",
+        "context_in_k": 6,
+        "check": "Numbers match sheet",
+        "escalate": "Anomaly needs explaining -> T3"
+      },
+      {
+        "task": "Meeting scheduling and agenda",
+        "tier": "T1",
+        "effort": "low",
+        "context_in_k": 2,
+        "check": "Time zones correct",
+        "escalate": "Never"
+      },
+      {
+        "task": "Write an SOP or process doc",
+        "tier": "T2",
+        "effort": "medium",
+        "context_in_k": 8,
+        "check": "Numbered steps, owner, done condition",
+        "escalate": "Process redesign -> T3"
+      },
+      {
+        "task": "Resolve an unusual exception",
+        "tier": "T3",
+        "effort": "medium",
+        "context_in_k": 8,
+        "check": "Decision + rationale",
+        "escalate": "Never above T3"
+      }
+    ],
+    "product-strategy-routing": [
+      {
+        "task": "Strategy, positioning, trade-off decisions",
+        "tier": "T3",
+        "effort": "high",
+        "context_in_k": 25,
+        "check": "Options, criteria, recommendation, risks",
+        "escalate": "Bet-the-company decision -> T4 second opinion"
+      },
+      {
+        "task": "PRD first draft from a brief",
+        "tier": "T2",
+        "effort": "medium",
+        "context_in_k": 10,
+        "check": "Template sections all filled, metrics defined",
+        "escalate": "Problem statement unclear -> T3"
+      },
+      {
+        "task": "PRD review and gap finding",
+        "tier": "T3",
+        "effort": "medium",
+        "context_in_k": 15,
+        "check": "Lists risks, edge cases, open questions",
+        "escalate": "Never above T3"
+      },
+      {
+        "task": "Synthesise user interviews",
+        "tier": "T2",
+        "effort": "medium",
+        "context_in_k": 25,
+        "check": "Themes with quote evidence and counts",
+        "escalate": "Conflicting signals -> T3 to interpret"
+      },
+      {
+        "task": "Summarise each interview transcript",
+        "tier": "T1",
+        "effort": "low",
+        "context_in_k": 15,
+        "check": "Fixed template: pains, jobs, quotes",
+        "escalate": "Never"
+      },
+      {
+        "task": "Prioritise backlog with RICE or similar",
+        "tier": "T2",
+        "effort": "low",
+        "context_in_k": 8,
+        "check": "Scores computed by formula",
+        "escalate": "Final ranking call -> T3"
+      },
+      {
+        "task": "Write user stories and acceptance criteria",
+        "tier": "T2",
+        "effort": "low",
+        "context_in_k": 5,
+        "check": "Given/When/Then format",
+        "escalate": "Never"
+      },
+      {
+        "task": "Weekly stakeholder update",
+        "tier": "T2",
+        "effort": "low",
+        "context_in_k": 6,
+        "check": "Under 250 words, RAG status",
+        "escalate": "Bad news or escalation -> T3 tone review"
+      },
+      {
+        "task": "Competitor feature table",
+        "tier": "T2",
+        "effort": "medium",
+        "context_in_k": 15,
+        "check": "Every cell has a source",
+        "escalate": "Positioning implications -> T3"
+      },
+      {
+        "task": "Meeting notes to action items",
+        "tier": "T1",
+        "effort": "low",
+        "context_in_k": 6,
+        "check": "Owner + date per item",
+        "escalate": "Never"
+      },
+      {
+        "task": "Metrics definitions and dashboard specs",
+        "tier": "T2",
+        "effort": "medium",
+        "context_in_k": 8,
+        "check": "Formula + source table per metric",
+        "escalate": "North-star choice -> T3"
+      },
+      {
+        "task": "Pitch or exec narrative",
+        "tier": "T3",
+        "effort": "medium",
+        "context_in_k": 15,
+        "check": "Story arc, ask, numbers sourced",
+        "escalate": "Never above T3"
+      }
+    ],
+    "research-analyst-routing": [
+      {
+        "task": "Frame the research question and plan",
+        "tier": "T3",
+        "effort": "medium",
+        "context_in_k": 5,
+        "check": "Sub-questions + source types",
+        "escalate": "Never above T3"
+      },
+      {
+        "task": "Extract facts from each source",
+        "tier": "T1",
+        "effort": "low",
+        "context_in_k": 12,
+        "check": "Each fact has quote + URL",
+        "escalate": "Paywalled, scanned or contradictory source -> T2"
+      },
+      {
+        "task": "Relevance triage of search results",
+        "tier": "T1",
+        "effort": "low",
+        "context_in_k": 6,
+        "check": "Keep/drop with one reason",
+        "escalate": "Never"
+      },
+      {
+        "task": "Compile comparison table",
+        "tier": "T2",
+        "effort": "medium",
+        "context_in_k": 15,
+        "check": "Every cell sourced, gaps marked",
+        "escalate": "Sources conflict -> T3"
+      },
+      {
+        "task": "Synthesis and conclusions",
+        "tier": "T3",
+        "effort": "high",
+        "context_in_k": 20,
+        "check": "Claims trace to extracted facts",
+        "escalate": "High-stakes decision -> T4 second read"
+      },
+      {
+        "task": "Fact-check key claims",
+        "tier": "T3",
+        "effort": "medium",
+        "context_in_k": 10,
+        "check": "Verdict + source per claim",
+        "escalate": "Never above T3"
+      },
+      {
+        "task": "Summarise long reports or papers",
+        "tier": "T1",
+        "effort": "medium",
+        "context_in_k": 50,
+        "check": "300 words, section anchors",
+        "escalate": "Technical depth needed -> T2"
+      },
+      {
+        "task": "Write the final brief from the synthesis",
+        "tier": "T2",
+        "effort": "medium",
+        "context_in_k": 10,
+        "check": "Matches outline, citations intact",
+        "escalate": "Never"
+      },
+      {
+        "task": "Citation formatting and link checks",
+        "tier": "T0",
+        "effort": "-",
+        "context_in_k": 1.5,
+        "check": "All URLs return 200",
+        "escalate": "Never"
+      },
+      {
+        "task": "Translate a foreign-language source",
+        "tier": "T2",
+        "effort": "low",
+        "context_in_k": 10,
+        "check": "Names, numbers unchanged",
+        "escalate": "Legal text -> T3"
+      }
+    ],
+    "sales-bd-routing": [
+      {
+        "task": "Account strategy for a key deal",
+        "tier": "T3",
+        "effort": "high",
+        "context_in_k": 15,
+        "check": "Stakeholders, pains, plan, risks",
+        "escalate": "Never above T3"
+      },
+      {
+        "task": "Lead qualification against ICP",
+        "tier": "T1",
+        "effort": "low",
+        "context_in_k": 5,
+        "check": "Fit score + reason per lead",
+        "escalate": "Borderline enterprise leads -> T2"
+      },
+      {
+        "task": "Account research summary",
+        "tier": "T2",
+        "effort": "low",
+        "context_in_k": 8,
+        "check": "5 facts with sources",
+        "escalate": "Never"
+      },
+      {
+        "task": "Personalised first lines",
+        "tier": "T1",
+        "effort": "medium",
+        "context_in_k": 4,
+        "check": "References one real fact",
+        "escalate": "Top-20 accounts -> T2"
+      },
+      {
+        "task": "Outreach sequence templates",
+        "tier": "T2",
+        "effort": "medium",
+        "context_in_k": 6,
+        "check": "Under 90 words, one ask",
+        "escalate": "Never"
+      },
+      {
+        "task": "Call prep brief",
+        "tier": "T2",
+        "effort": "medium",
+        "context_in_k": 8,
+        "check": "Agenda, questions, objections",
+        "escalate": "Strategic deal -> T3"
+      },
+      {
+        "task": "Call summary and next steps",
+        "tier": "T1",
+        "effort": "low",
+        "context_in_k": 15,
+        "check": "MEDDICC-style fields filled",
+        "escalate": "Never"
+      },
+      {
+        "task": "CRM field updates and dedupe",
+        "tier": "T0",
+        "effort": "-",
+        "context_in_k": 1.5,
+        "check": "API write log",
+        "escalate": "Never"
+      },
+      {
+        "task": "Objection handling and negotiation prep",
+        "tier": "T3",
+        "effort": "medium",
+        "context_in_k": 8,
+        "check": "Response per objection + walk-away",
+        "escalate": "Never above T3"
+      },
+      {
+        "task": "Proposal draft",
+        "tier": "T2",
+        "effort": "medium",
+        "context_in_k": 10,
+        "check": "Pricing from the price sheet only",
+        "escalate": "Custom pricing or terms -> T3 review"
+      }
+    ],
+    "social-creator-routing": [
+      {
+        "task": "Content strategy, series angle, positioning",
+        "tier": "T3",
+        "effort": "medium",
+        "context_in_k": 20,
+        "check": "3 angles with audience, promise, proof",
+        "escalate": "Niche or audience is unclear"
+      },
+      {
+        "task": "Pick the strongest hook from variants",
+        "tier": "T3",
+        "effort": "medium",
+        "context_in_k": 5,
+        "check": "Ranked top 3 with reasons",
+        "escalate": "Never above T3"
+      },
+      {
+        "task": "Write a full video script from an outline",
+        "tier": "T2",
+        "effort": "medium",
+        "context_in_k": 8,
+        "check": "Timed to target length, one CTA",
+        "escalate": "Topic needs facts or claims verified -> T3 review"
+      },
+      {
+        "task": "Generate hook, title and caption variants",
+        "tier": "T2",
+        "effort": "low",
+        "context_in_k": 3,
+        "check": "Length limits per platform",
+        "escalate": "Never; judging goes to T3"
+      },
+      {
+        "task": "Repurpose long video into 5 shorts",
+        "tier": "T2",
+        "effort": "medium",
+        "context_in_k": 15,
+        "check": "Each short has timestamp in/out, hook, caption",
+        "escalate": "Transcript is messy or multilingual -> T1 clean first"
+      },
+      {
+        "task": "Clean subtitles / transcript",
+        "tier": "T1",
+        "effort": "low",
+        "context_in_k": 10,
+        "check": "Timestamps preserved, no words dropped",
+        "escalate": "Heavy dialect or code-switching -> T2"
+      },
+      {
+        "task": "Hashtags, keywords, alt text",
+        "tier": "T1",
+        "effort": "low",
+        "context_in_k": 1.5,
+        "check": "Count and banned-tag list",
+        "escalate": "Never"
+      },
+      {
+        "task": "Thumbnail text and image prompt variants",
+        "tier": "T2",
+        "effort": "low",
+        "context_in_k": 2,
+        "check": "Max 4 words of overlay text",
+        "escalate": "Pick the winner on T3"
+      },
+      {
+        "task": "Content calendar CSV and upload sheet",
+        "tier": "T2",
+        "effort": "low",
+        "context_in_k": 5,
+        "check": "CSV validates against column schema",
+        "escalate": "Never"
+      },
+      {
+        "task": "Reply drafts to comments",
+        "tier": "T1",
+        "effort": "low",
+        "context_in_k": 2,
+        "check": "Tone list, no promises",
+        "escalate": "Complaint, legal or brand-safety risk -> T3"
+      },
+      {
+        "task": "Rename clips, check links, file housekeeping",
+        "tier": "T0",
+        "effort": "-",
+        "context_in_k": 1.5,
+        "check": "Script output",
+        "escalate": "Never"
+      },
+      {
+        "task": "Analyse last week's performance",
+        "tier": "T3",
+        "effort": "medium",
+        "context_in_k": 10,
+        "check": "3 actionable insights tied to numbers",
+        "escalate": "Never above T3"
+      }
+    ],
+    "support-success-routing": [
+      {
+        "task": "Ticket triage: category, urgency, sentiment",
+        "tier": "T1",
+        "effort": "low",
+        "context_in_k": 2,
+        "check": "Allowed labels only",
+        "escalate": "Legal threat or safety -> T3"
+      },
+      {
+        "task": "Draft reply from help docs",
+        "tier": "T2",
+        "effort": "low",
+        "context_in_k": 6,
+        "check": "Cites the doc used, no new promises",
+        "escalate": "No doc covers it -> T3"
+      },
+      {
+        "task": "Thread summary for handover",
+        "tier": "T1",
+        "effort": "low",
+        "context_in_k": 8,
+        "check": "Issue, tried, next step",
+        "escalate": "Never"
+      },
+      {
+        "task": "Escalation or angry customer reply",
+        "tier": "T3",
+        "effort": "medium",
+        "context_in_k": 8,
+        "check": "Policy-compliant, empathetic, specific",
+        "escalate": "Never above T3"
+      },
+      {
+        "task": "Write or update a help article",
+        "tier": "T2",
+        "effort": "medium",
+        "context_in_k": 8,
+        "check": "Steps tested against product",
+        "escalate": "Never"
+      },
+      {
+        "task": "Macro and canned-response updates",
+        "tier": "T2",
+        "effort": "low",
+        "context_in_k": 4,
+        "check": "Placeholders valid",
+        "escalate": "Never"
+      },
+      {
+        "task": "Churn-risk review of an account",
+        "tier": "T3",
+        "effort": "medium",
+        "context_in_k": 10,
+        "check": "Risk level + save plan",
+        "escalate": "Never above T3"
+      },
+      {
+        "task": "Weekly ticket trend report",
+        "tier": "T2",
+        "effort": "low",
+        "context_in_k": 6,
+        "check": "Counts from helpdesk export",
+        "escalate": "New spike -> T3"
+      },
+      {
+        "task": "Tagging cleanup, SLA checks, merges",
+        "tier": "T0",
+        "effort": "-",
+        "context_in_k": 1.5,
+        "check": "Helpdesk automation log",
+        "escalate": "Never"
+      },
+      {
+        "task": "Translate a reply",
+        "tier": "T1",
+        "effort": "medium",
+        "context_in_k": 2,
+        "check": "Product names unchanged",
+        "escalate": "Legal or refund wording -> T2"
+      }
+    ],
+    "vibe-coder-routing": [
+      {
+        "task": "Plan a feature or choose an architecture",
+        "tier": "T3",
+        "effort": "high",
+        "context_in_k": 25,
+        "check": "Plan names files, data model and test strategy",
+        "escalate": "Two plausible designs remain and stakes are high"
+      },
+      {
+        "task": "Debug an unclear or multi-file bug",
+        "tier": "T3",
+        "effort": "medium",
+        "context_in_k": 35,
+        "check": "Repro test fails before, passes after",
+        "escalate": "Root cause still unknown after one T3 pass at high"
+      },
+      {
+        "task": "Implement a feature from a clear spec",
+        "tier": "T2",
+        "effort": "medium",
+        "context_in_k": 18,
+        "check": "Tests + typecheck + lint pass",
+        "escalate": "Fails checks twice or spec gap found"
+      },
+      {
+        "task": "UI tweak, copy or style change",
+        "tier": "T2",
+        "effort": "low",
+        "context_in_k": 6,
+        "check": "Build passes, screenshot matches",
+        "escalate": "Layout breaks across breakpoints twice"
+      },
+      {
+        "task": "Write tests for existing code",
+        "tier": "T2",
+        "effort": "medium",
+        "context_in_k": 12,
+        "check": "Tests run and fail when code is broken",
+        "escalate": "Tests need design decisions about behaviour"
+      },
+      {
+        "task": "Refactor to a known pattern",
+        "tier": "T2",
+        "effort": "medium",
+        "context_in_k": 20,
+        "check": "Same tests pass, diff is behaviour-neutral",
+        "escalate": "Touches more than 5 files or public APIs"
+      },
+      {
+        "task": "Docs, README, code comments",
+        "tier": "T2",
+        "effort": "low",
+        "context_in_k": 8,
+        "check": "Commands in docs actually run",
+        "escalate": "Never; docs stay on T2"
+      },
+      {
+        "task": "Summarise a log or stack trace",
+        "tier": "T1",
+        "effort": "low",
+        "context_in_k": 5,
+        "check": "Names the failing file and line",
+        "escalate": "Trace spans several services"
+      },
+      {
+        "task": "Explain an error or answer a small API question",
+        "tier": "T1",
+        "effort": "medium",
+        "context_in_k": 3,
+        "check": "Answer cites the doc or line",
+        "escalate": "Answer contradicts observed behaviour"
+      },
+      {
+        "task": "Commit message or PR description from a diff",
+        "tier": "T1",
+        "effort": "low",
+        "context_in_k": 3,
+        "check": "Conventional-commit format",
+        "escalate": "Never"
+      },
+      {
+        "task": "Rename files, format, auto-fix lint",
+        "tier": "T0",
+        "effort": "-",
+        "context_in_k": 1.5,
+        "check": "Formatter/linter exit code 0",
+        "escalate": "Linter rule needs a code decision -> T2"
+      },
+      {
+        "task": "Check routes, links, env vars, dead code",
+        "tier": "T0",
+        "effort": "-",
+        "context_in_k": 1.5,
+        "check": "Script report",
+        "escalate": "Report shows unexpected failures -> T1 summary"
+      },
+      {
+        "task": "Review a risky change before deploy (auth, payments, migrations)",
+        "tier": "T3",
+        "effort": "high",
+        "context_in_k": 20,
+        "check": "Reviewer verdict SHIP",
+        "escalate": "Reviewer unsure on security or data loss -> T4"
+      }
+    ],
+    "writer-editor-routing": [
+      {
+        "task": "Find the angle and thesis",
+        "tier": "T3",
+        "effort": "medium",
+        "context_in_k": 8,
+        "check": "One-sentence thesis + 3 supporting points",
+        "escalate": "Never above T3"
+      },
+      {
+        "task": "Outline from the thesis",
+        "tier": "T2",
+        "effort": "low",
+        "context_in_k": 5,
+        "check": "Sections map to thesis points",
+        "escalate": "Never"
+      },
+      {
+        "task": "First draft from an approved outline",
+        "tier": "T2",
+        "effort": "medium",
+        "context_in_k": 8,
+        "check": "Word count, follows outline",
+        "escalate": "Voice is off twice -> T3"
+      },
+      {
+        "task": "Structural and line edit",
+        "tier": "T3",
+        "effort": "medium",
+        "context_in_k": 10,
+        "check": "Edit list, not a rewrite",
+        "escalate": "Never above T3"
+      },
+      {
+        "task": "Apply edit list",
+        "tier": "T2",
+        "effort": "low",
+        "context_in_k": 10,
+        "check": "Each edit applied",
+        "escalate": "Never"
+      },
+      {
+        "task": "Proofread: spelling, grammar, consistency",
+        "tier": "T1",
+        "effort": "low",
+        "context_in_k": 8,
+        "check": "Changes listed as diffs",
+        "escalate": "Never"
+      },
+      {
+        "task": "Headline and subject-line variants",
+        "tier": "T2",
+        "effort": "low",
+        "context_in_k": 2,
+        "check": "Length limits",
+        "escalate": "Pick on T3"
+      },
+      {
+        "task": "Fact-check claims and quotes",
+        "tier": "T3",
+        "effort": "medium",
+        "context_in_k": 8,
+        "check": "Verdict + source per claim",
+        "escalate": "Never above T3"
+      },
+      {
+        "task": "Repurpose into thread, LinkedIn post, summary",
+        "tier": "T2",
+        "effort": "low",
+        "context_in_k": 5,
+        "check": "Platform length",
+        "escalate": "Never"
+      },
+      {
+        "task": "Formatting, links, image alt text",
+        "tier": "T0",
+        "effort": "-",
+        "context_in_k": 1.5,
+        "check": "Markdown lint + link check",
+        "escalate": "Never"
+      }
+    ]
+  }
+}

@@ -1,0 +1,16 @@
+# Every assumption the calculator uses. Change any value and re-run:
+#   python3 benchmarks/calculate.py
+baseline:
+  model: opus          # "everything on the strongest everyday model", Anthropic's default recommendation
+  effort: medium       # Opus 5.5 default effort
+# Output-token multipliers by effort, relative to medium.
+# Anthropic: on long coding tasks medium cost ~30-52% less than high; low ~two thirds less than high.
+effort_output_multiplier: {low: 0.55, medium: 1.0, high: 1.6, "-": 1.0}
+# Smaller models may write a little more to reach the same result.
+verbosity_multiplier: {T0: 1.0, T1: 1.1, T2: 1.1, T3: 1.0, T4: 1.0}
+# Each failed attempt is paid in full, then redone one tier up at medium effort.
+escalation_extra_input_k: 0.5     # error message and notes passed upward
+# Cost of the routing itself, charged to the routed side only.
+skill_load_input_k_per_session: 4.0     # base + persona skill read by the main model each session
+delegation_overhead_per_task_k: {input: 0.4, output: 0.15}   # main model writes the brief, reads the result
+# Not credited (conservative): prompt caching and Batch API discounts. Both stack on top.

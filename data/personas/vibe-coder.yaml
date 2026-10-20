@@ -1,0 +1,55 @@
+name: vibe-coder-routing
+who: "Indie hackers and AI-assisted builders"
+title: Vibe coder routing
+persona: Indie hackers, prototypers and AI-assisted builders shipping web apps with Claude Code, Cursor-style editors, Vercel and Supabase.
+purpose: Ship working code fast without paying Opus prices for routine edits. Opus thinks, Sonnet types, Haiku and scripts do the chores.
+win: Feature merged, tests green, lowest spend per merged change.
+description: "Model routing for AI-assisted coding: decide which tier plans, implements, tests, debugs and reviews code. Use when building features, fixing bugs, refactoring, writing tests or commits, or asked to code cheaper. Not for product strategy or PRDs."
+sessions_per_week: 20
+tasks:
+  - {task: "Plan a feature or choose an architecture", tier: T3, effort: high, per_week: 2, base_in_k: 60, routed_in_k: 25, out_k: 6, p_fail: 0.05, check: "Plan names files, data model and test strategy", escalate: "Two plausible designs remain and stakes are high"}
+  - {task: "Debug an unclear or multi-file bug", tier: T3, effort: medium, per_week: 3, base_in_k: 80, routed_in_k: 35, out_k: 5, p_fail: 0.10, check: "Repro test fails before, passes after", escalate: "Root cause still unknown after one T3 pass at high"}
+  - {task: "Implement a feature from a clear spec", tier: T2, effort: medium, per_week: 10, base_in_k: 50, routed_in_k: 18, out_k: 8, p_fail: 0.10, check: "Tests + typecheck + lint pass", escalate: "Fails checks twice or spec gap found"}
+  - {task: "UI tweak, copy or style change", tier: T2, effort: low, per_week: 15, base_in_k: 40, routed_in_k: 6, out_k: 2, p_fail: 0.08, check: "Build passes, screenshot matches", escalate: "Layout breaks across breakpoints twice"}
+  - {task: "Write tests for existing code", tier: T2, effort: medium, per_week: 6, base_in_k: 40, routed_in_k: 12, out_k: 6, p_fail: 0.10, check: "Tests run and fail when code is broken", escalate: "Tests need design decisions about behaviour"}
+  - {task: "Refactor to a known pattern", tier: T2, effort: medium, per_week: 4, base_in_k: 50, routed_in_k: 20, out_k: 8, p_fail: 0.12, check: "Same tests pass, diff is behaviour-neutral", escalate: "Touches more than 5 files or public APIs"}
+  - {task: "Docs, README, code comments", tier: T2, effort: low, per_week: 4, base_in_k: 30, routed_in_k: 8, out_k: 3, p_fail: 0.05, check: "Commands in docs actually run", escalate: "Never; docs stay on T2"}
+  - {task: "Summarise a log or stack trace", tier: T1, effort: low, per_week: 15, base_in_k: 25, routed_in_k: 5, out_k: 0.5, p_fail: 0.08, check: "Names the failing file and line", escalate: "Trace spans several services"}
+  - {task: "Explain an error or answer a small API question", tier: T1, effort: medium, per_week: 15, base_in_k: 30, routed_in_k: 3, out_k: 0.6, p_fail: 0.10, check: "Answer cites the doc or line", escalate: "Answer contradicts observed behaviour"}
+  - {task: "Commit message or PR description from a diff", tier: T1, effort: low, per_week: 20, base_in_k: 20, routed_in_k: 3, out_k: 0.3, p_fail: 0.05, check: "Conventional-commit format", escalate: "Never"}
+  - {task: "Rename files, format, auto-fix lint", tier: T0, effort: "-", per_week: 10, base_in_k: 15, routed_in_k: 1.5, out_k: 0.3, p_fail: 0.02, check: "Formatter/linter exit code 0", escalate: "Linter rule needs a code decision -> T2"}
+  - {task: "Check routes, links, env vars, dead code", tier: T0, effort: "-", per_week: 5, base_in_k: 20, routed_in_k: 1.5, out_k: 0.3, p_fail: 0.02, check: "Script report", escalate: "Report shows unexpected failures -> T1 summary"}
+  - {task: "Review a risky change before deploy (auth, payments, migrations)", tier: T3, effort: high, per_week: 3, base_in_k: 50, routed_in_k: 20, out_k: 3, p_fail: 0.03, check: "Reviewer verdict SHIP", escalate: "Reviewer unsure on security or data loss -> T4"}
+escalate_now:
+  - Auth, payments, row-level security, database migrations or anything that can lose user data.
+  - The bug only reproduces in production or is intermittent.
+  - The user cannot describe the expected behaviour; clarify on T3 before any code is written.
+  - Two cheap attempts produced different wrong fixes for the same failing test.
+context_diet:
+  - Send the failing test output, the stack trace's top frames and the touched files, never the whole repo.
+  - Give T2 workers file paths plus a 10-line spec; let them open files themselves.
+  - Summarise long CI logs on T1 down to the first error and its cause.
+  - Keep the project conventions (stack, lint rules, folder layout) in one stable CLAUDE.md-style file so it is cached.
+tool_first:
+  - Formatting, import sorting and lint autofix (`prettier --write`, `eslint --fix`, `ruff --fix`).
+  - Renames and moves with `git mv` and editor refactors, not a model rewrite.
+  - Dead links, env var presence, route lists, TODO extraction with `grep`/`rg` scripts.
+  - "Type errors: run `tsc` first and pass only the errors to the worker."
+anti_patterns:
+  - Asking Opus to "make the button blue".
+  - Pasting the full repo into a commit-message request.
+  - Letting a T2 worker loop five times on the same failing test instead of escalating after two.
+  - Refactoring and adding features in the same step, which makes validation impossible.
+handoff_tip: "Brief T2 with: goal, files to touch, files not to touch, the exact test command, and 'diff only'."
+example:
+  request: "Add Google sign-in to my Next.js + Supabase app, write tests, and open a PR."
+  plan: |
+    ROUTING PLAN
+    1. [T3] opus/high      Design auth flow: callback route, session handling, RLS impact
+    2. [T2] sonnet/medium  Implement provider config + callback route from the design
+    3. [T2] sonnet/medium  Write tests for sign-in, sign-out, expired session
+    4. [T0] script         Run lint --fix, typecheck, test suite
+    5. [T1] haiku/low      Summarise any failing test output
+    6. [T3] opus/high      Review diff (auth = high stakes) -> SHIP / FIX
+    7. [T1] haiku/low      Write PR description from the final diff
+    Escalate: a step failing its check twice moves up one tier.

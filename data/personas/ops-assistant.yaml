@@ -1,0 +1,48 @@
+name: ops-assistant-routing
+who: "VAs, ops and chiefs of staff"
+title: Ops assistant routing
+persona: Virtual assistants, operations managers, chiefs of staff and admins running sheets, inboxes, files, uploads and recurring admin.
+purpose: Most ops work is rules, not judgement. Push it to scripts and Haiku, keep Sonnet for drafting and Opus for the rare exception.
+win: Admin done on time with near-zero AI spend and no silent data errors.
+description: "Model routing for operations and admin work: which tier handles spreadsheets, CSV cleanup, file renaming, inbox triage, scheduling, data entry, uploads and recurring reports. Use for bulk admin, VA or chief-of-staff tasks. Not for financial analysis or strategy."
+sessions_per_week: 15
+tasks:
+  - {task: "Clean and normalise a CSV or sheet", tier: T0, effort: "-", per_week: 6, base_in_k: 40, routed_in_k: 2, out_k: 0.5, p_fail: 0.05, check: "Row count unchanged, schema valid", escalate: "Messy free text -> T1 per column"}
+  - {task: "Categorise or tag rows", tier: T1, effort: low, per_week: 8, base_in_k: 30, routed_in_k: 8, out_k: 1.5, p_fail: 0.08, check: "Only allowed labels used", escalate: "More than 10% UNSURE -> T2"}
+  - {task: "Inbox triage and labelling", tier: T1, effort: low, per_week: 10, base_in_k: 25, routed_in_k: 6, out_k: 0.5, p_fail: 0.05, check: "Label + priority per email", escalate: "Legal, HR or money emails -> T3"}
+  - {task: "Draft routine email replies", tier: T2, effort: low, per_week: 15, base_in_k: 10, routed_in_k: 3, out_k: 0.4, p_fail: 0.05, check: "Under 120 words, facts from thread", escalate: "Sensitive or angry thread -> T3"}
+  - {task: "Rename and sort files", tier: T0, effort: "-", per_week: 5, base_in_k: 10, routed_in_k: 1.5, out_k: 0.3, p_fail: 0.02, check: "Dry-run list approved", escalate: "Never"}
+  - {task: "Check links and uploads", tier: T0, effort: "-", per_week: 4, base_in_k: 15, routed_in_k: 1.5, out_k: 0.3, p_fail: 0.02, check: "Status code report", escalate: "Never"}
+  - {task: "Extract fields from invoices or forms", tier: T1, effort: low, per_week: 20, base_in_k: 6, routed_in_k: 4, out_k: 0.3, p_fail: 0.08, check: "JSON schema + totals add up", escalate: "Handwritten or unclear scan -> T2"}
+  - {task: "Weekly ops report from data", tier: T2, effort: low, per_week: 1, base_in_k: 30, routed_in_k: 6, out_k: 1, p_fail: 0.05, check: "Numbers match sheet", escalate: "Anomaly needs explaining -> T3"}
+  - {task: "Meeting scheduling and agenda", tier: T1, effort: low, per_week: 6, base_in_k: 8, routed_in_k: 2, out_k: 0.4, p_fail: 0.05, check: "Time zones correct", escalate: "Never"}
+  - {task: "Write an SOP or process doc", tier: T2, effort: medium, per_week: 1, base_in_k: 20, routed_in_k: 8, out_k: 3, p_fail: 0.05, check: "Numbered steps, owner, done condition", escalate: "Process redesign -> T3"}
+  - {task: "Resolve an unusual exception", tier: T3, effort: medium, per_week: 1, base_in_k: 20, routed_in_k: 8, out_k: 1, p_fail: 0.05, check: "Decision + rationale", escalate: "Never above T3"}
+escalate_now:
+  - Anything involving payments, contracts, HR, legal or personal data deletion.
+  - Emails to executives, investors or upset customers.
+  - A rule that conflicts with what the data shows.
+context_diet:
+  - Send only the columns the task needs plus 3 example rows, not the whole sheet.
+  - For inbox triage, send sender, subject and the first 300 characters, not full threads.
+  - Keep a stable labels-and-rules card as the first block of every batch.
+tool_first:
+  - "CSV cleanup: trim, dedupe, case, date formats with a script or sheet formulas."
+  - File renames with a dry-run script the user approves.
+  - Link and upload checks with `curl` or the platform's API.
+  - Totals and reconciliation with formulas; the model only explains differences.
+anti_patterns:
+  - Asking any model to "clean up this spreadsheet" when a formula would do it exactly.
+  - Opus drafting "thanks, received" replies.
+  - Bulk-sending model-drafted emails without a T3 check on sensitive ones.
+handoff_tip: "Brief T1 with the label list, 3 labelled examples, 'one line per row, ID first', and 'UNSURE if unclear'."
+example:
+  request: "Clean this 2,000-row supplier sheet, tag each by category, and draft a reminder to the 40 overdue ones."
+  plan: |
+    ROUTING PLAN
+    1. [T0] script         Trim, dedupe, normalise dates and country codes
+    2. [T1] haiku/low      Tag category per row, chunks of 50 (UNSURE allowed)
+    3. [T2] sonnet/low     Tag the UNSURE rows
+    4. [T0] formula        Filter overdue suppliers
+    5. [T2] sonnet/low     One reminder template + merge fields
+    6. [T3] opus/medium    Review tone for the 5 largest suppliers before sending

@@ -1,0 +1,47 @@
+name: writer-editor-routing
+who: "Writers, newsletter authors, editors"
+title: Writer and editor routing
+persona: Newsletter writers, bloggers, ghostwriters, copywriters and editors producing long-form text.
+purpose: The idea, the argument and the final edit deserve Opus. Outlines, drafts from approved outlines, proofreading and formatting do not.
+win: Finished pieces with a strong point of view, produced at a fraction of the token cost.
+description: "Model routing for writing and editing: which tier ideates, outlines, drafts, edits, proofreads, fact-checks and formats newsletters, blogs, essays, ghostwritten posts and books. Use for long-form writing or editing. Not for short social captions or ad copy."
+sessions_per_week: 10
+tasks:
+  - {task: "Find the angle and thesis", tier: T3, effort: medium, per_week: 2, base_in_k: 15, routed_in_k: 8, out_k: 1.5, p_fail: 0.05, check: "One-sentence thesis + 3 supporting points", escalate: "Never above T3"}
+  - {task: "Outline from the thesis", tier: T2, effort: low, per_week: 2, base_in_k: 15, routed_in_k: 5, out_k: 1, p_fail: 0.05, check: "Sections map to thesis points", escalate: "Never"}
+  - {task: "First draft from an approved outline", tier: T2, effort: medium, per_week: 2, base_in_k: 25, routed_in_k: 8, out_k: 5, p_fail: 0.08, check: "Word count, follows outline", escalate: "Voice is off twice -> T3"}
+  - {task: "Structural and line edit", tier: T3, effort: medium, per_week: 2, base_in_k: 25, routed_in_k: 10, out_k: 3, p_fail: 0.05, check: "Edit list, not a rewrite", escalate: "Never above T3"}
+  - {task: "Apply edit list", tier: T2, effort: low, per_week: 2, base_in_k: 20, routed_in_k: 10, out_k: 5, p_fail: 0.05, check: "Each edit applied", escalate: "Never"}
+  - {task: "Proofread: spelling, grammar, consistency", tier: T1, effort: low, per_week: 4, base_in_k: 15, routed_in_k: 8, out_k: 0.8, p_fail: 0.05, check: "Changes listed as diffs", escalate: "Never"}
+  - {task: "Headline and subject-line variants", tier: T2, effort: low, per_week: 3, base_in_k: 10, routed_in_k: 2, out_k: 0.6, p_fail: 0.05, check: "Length limits", escalate: "Pick on T3"}
+  - {task: "Fact-check claims and quotes", tier: T3, effort: medium, per_week: 1, base_in_k: 20, routed_in_k: 8, out_k: 1, p_fail: 0.05, check: "Verdict + source per claim", escalate: "Never above T3"}
+  - {task: "Repurpose into thread, LinkedIn post, summary", tier: T2, effort: low, per_week: 3, base_in_k: 20, routed_in_k: 5, out_k: 1.5, p_fail: 0.05, check: "Platform length", escalate: "Never"}
+  - {task: "Formatting, links, image alt text", tier: T0, effort: "-", per_week: 3, base_in_k: 10, routed_in_k: 1.5, out_k: 0.3, p_fail: 0.02, check: "Markdown lint + link check", escalate: "Never"}
+escalate_now:
+  - Ghostwriting in a named person's voice for public posting.
+  - "Anything with legal exposure: named people, health, money claims."
+  - When two drafts both miss the thesis.
+context_diet:
+  - Keep a stable voice sample (300 words) and style rules at the top of every brief.
+  - Editors return edit lists, not full rewrites; T2 applies them.
+  - Send only the section being drafted plus the outline, not the whole manuscript.
+tool_first:
+  - Word counts, reading level and link checks with tools.
+  - Markdown formatting and lint with a formatter.
+  - Find-and-replace consistency fixes (spelling of names, units) with search.
+anti_patterns:
+  - Opus proofreading for commas.
+  - Asking for a "better version" instead of a specific edit list.
+  - Drafting before the thesis is agreed.
+handoff_tip: "Brief T2 with the voice sample, the outline section, the word target and 'no new arguments'."
+example:
+  request: "Write my weekly 1,200-word newsletter on why AI agents need accountability."
+  plan: |
+    ROUTING PLAN
+    1. [T3] opus/medium    Thesis + 3 points + the one story to open with
+    2. [T2] sonnet/low     Outline
+    3. [T2] sonnet/medium  Draft from outline (voice sample in brief)
+    4. [T3] opus/medium    Edit list: structure, argument, lines
+    5. [T2] sonnet/low     Apply edits
+    6. [T1] haiku/low      Proofread, list diffs
+    7. [T2] sonnet/low     5 subject lines -> [T3] pick one

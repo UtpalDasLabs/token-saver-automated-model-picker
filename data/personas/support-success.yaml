@@ -1,0 +1,45 @@
+name: support-success-routing
+who: "Support and customer success"
+title: Support and success routing
+persona: Customer support agents, support leads and customer success managers handling tickets, help docs and account health.
+purpose: Most tickets are routine and answerable from docs. Let Haiku triage and Sonnet draft; keep Opus for escalations, churn risks and policy calls.
+win: Faster, accurate replies at lower cost per resolved ticket, with no risky answers sent unchecked.
+description: "Model routing for customer support and success: which tier triages tickets, drafts replies from help docs, summarises threads, writes macros and help articles, flags churn risk and handles escalations. Use for support queues or account management. Not for sales outreach."
+sessions_per_week: 20
+tasks:
+  - {task: "Ticket triage: category, urgency, sentiment", tier: T1, effort: low, per_week: 60, base_in_k: 6, routed_in_k: 2, out_k: 0.15, p_fail: 0.05, check: "Allowed labels only", escalate: "Legal threat or safety -> T3"}
+  - {task: "Draft reply from help docs", tier: T2, effort: low, per_week: 40, base_in_k: 20, routed_in_k: 6, out_k: 0.5, p_fail: 0.08, check: "Cites the doc used, no new promises", escalate: "No doc covers it -> T3"}
+  - {task: "Thread summary for handover", tier: T1, effort: low, per_week: 20, base_in_k: 15, routed_in_k: 8, out_k: 0.4, p_fail: 0.05, check: "Issue, tried, next step", escalate: "Never"}
+  - {task: "Escalation or angry customer reply", tier: T3, effort: medium, per_week: 4, base_in_k: 20, routed_in_k: 8, out_k: 0.8, p_fail: 0.05, check: "Policy-compliant, empathetic, specific", escalate: "Never above T3"}
+  - {task: "Write or update a help article", tier: T2, effort: medium, per_week: 2, base_in_k: 25, routed_in_k: 8, out_k: 2, p_fail: 0.05, check: "Steps tested against product", escalate: "Never"}
+  - {task: "Macro and canned-response updates", tier: T2, effort: low, per_week: 2, base_in_k: 15, routed_in_k: 4, out_k: 1, p_fail: 0.05, check: "Placeholders valid", escalate: "Never"}
+  - {task: "Churn-risk review of an account", tier: T3, effort: medium, per_week: 2, base_in_k: 30, routed_in_k: 10, out_k: 1, p_fail: 0.05, check: "Risk level + save plan", escalate: "Never above T3"}
+  - {task: "Weekly ticket trend report", tier: T2, effort: low, per_week: 1, base_in_k: 40, routed_in_k: 6, out_k: 1, p_fail: 0.05, check: "Counts from helpdesk export", escalate: "New spike -> T3"}
+  - {task: "Tagging cleanup, SLA checks, merges", tier: T0, effort: "-", per_week: 5, base_in_k: 15, routed_in_k: 1.5, out_k: 0.3, p_fail: 0.02, check: "Helpdesk automation log", escalate: "Never"}
+  - {task: "Translate a reply", tier: T1, effort: medium, per_week: 10, base_in_k: 4, routed_in_k: 2, out_k: 0.5, p_fail: 0.05, check: "Product names unchanged", escalate: "Legal or refund wording -> T2"}
+escalate_now:
+  - Refunds above policy, legal threats, security or data-privacy requests.
+  - Public complaints on social media.
+  - Any reply that promises a fix date or a feature.
+context_diet:
+  - Retrieve the 1–3 relevant help articles; don't paste the whole knowledge base.
+  - Send the last 3 messages plus a T1 summary of the rest of the thread.
+  - Keep tone guide and policy card as a stable, cached first block.
+tool_first:
+  - SLA timers, tag rules and auto-merges as helpdesk automations.
+  - Ticket counts and trends from the helpdesk export.
+  - Order or account lookups via API, not by asking the model to guess.
+anti_patterns:
+  - Opus answering "how do I reset my password".
+  - Haiku replying to a refund dispute.
+  - Sending drafted replies that cite no source doc.
+handoff_tip: "Brief T2 with the relevant doc excerpts, the policy card, the customer's last message and 'cite the doc, max 120 words'."
+example:
+  request: "Clear today's 80-ticket backlog and flag anything risky."
+  plan: |
+    ROUTING PLAN
+    1. [T1] haiku/low      Triage all 80: category, urgency, sentiment (batches of 20)
+    2. [T0] automation     Merge duplicates, apply tags
+    3. [T2] sonnet/low     Draft replies for routine tickets from help docs
+    4. [T3] opus/medium    Handle the 6 flagged: refunds, legal, angry
+    5. [T1] haiku/low      Summarise the open ones for handover

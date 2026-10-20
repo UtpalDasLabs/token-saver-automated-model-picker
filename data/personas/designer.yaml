@@ -1,0 +1,45 @@
+name: designer-routing
+who: "UX and UI designers"
+title: Designer routing
+persona: Product, UX and UI designers working in Figma, design systems and prototypes, often handing off to AI coding tools.
+purpose: Design judgement and critique stay on Opus; specs, microcopy, token tables and handoff notes go down the ladder.
+win: Clearer design decisions and cleaner handoffs, with model spend focused on critique rather than paperwork.
+description: "Model routing for UX and UI design: which tier does design critique, flows, UX research synthesis, microcopy, design tokens, component specs, accessibility checks and dev handoff notes. Use for Figma, prototyping or design-system work. Not for writing production code."
+sessions_per_week: 10
+tasks:
+  - {task: "Design critique and direction", tier: T3, effort: medium, per_week: 3, base_in_k: 20, routed_in_k: 10, out_k: 2, p_fail: 0.05, check: "Issues ranked by user impact", escalate: "Never above T3"}
+  - {task: "User flow and information architecture", tier: T3, effort: medium, per_week: 1, base_in_k: 25, routed_in_k: 10, out_k: 2, p_fail: 0.05, check: "Every state and edge case listed", escalate: "Never above T3"}
+  - {task: "Microcopy variants (buttons, errors, empty states)", tier: T2, effort: low, per_week: 6, base_in_k: 10, routed_in_k: 2, out_k: 0.6, p_fail: 0.05, check: "Length per component", escalate: "Pick on T3 for key screens"}
+  - {task: "Component spec and props table", tier: T2, effort: low, per_week: 3, base_in_k: 20, routed_in_k: 5, out_k: 1.5, p_fail: 0.05, check: "All variants and states covered", escalate: "Never"}
+  - {task: "Design tokens to JSON/CSS", tier: T0, effort: "-", per_week: 2, base_in_k: 15, routed_in_k: 1.5, out_k: 0.3, p_fail: 0.02, check: "Token build passes", escalate: "Never"}
+  - {task: "Accessibility contrast and alt text checks", tier: T0, effort: "-", per_week: 3, base_in_k: 10, routed_in_k: 1.5, out_k: 0.3, p_fail: 0.02, check: "WCAG contrast tool report", escalate: "Complex interaction a11y -> T3"}
+  - {task: "Alt text and image descriptions", tier: T1, effort: low, per_week: 4, base_in_k: 6, routed_in_k: 2, out_k: 0.3, p_fail: 0.05, check: "Under 125 characters", escalate: "Never"}
+  - {task: "Synthesise usability test notes", tier: T2, effort: medium, per_week: 1, base_in_k: 40, routed_in_k: 12, out_k: 2, p_fail: 0.05, check: "Issues with severity + count", escalate: "Contradictory findings -> T3"}
+  - {task: "Dev handoff notes", tier: T2, effort: low, per_week: 3, base_in_k: 20, routed_in_k: 5, out_k: 1.5, p_fail: 0.05, check: "Spacing, states, breakpoints listed", escalate: "Never"}
+  - {task: "Image-generation prompt variants", tier: T1, effort: low, per_week: 5, base_in_k: 6, routed_in_k: 1.5, out_k: 0.6, p_fail: 0.05, check: "Prompt template filled", escalate: "Choose winners on T3"}
+escalate_now:
+  - Changes to core navigation, onboarding or checkout flows.
+  - Accessibility issues beyond colour contrast (focus order, screen-reader flows).
+  - Brand identity decisions.
+context_diet:
+  - Describe the screen with its component list and states, or export a single frame, not the whole Figma file.
+  - Keep the design-system summary (tokens, components, voice) as a stable first block.
+  - "Usability notes: summarise per session on T1 first, then synthesise."
+tool_first:
+  - Contrast checks with a WCAG checker or plugin.
+  - Token export with Style Dictionary or the Figma variables export.
+  - Asset renaming and export presets in Figma itself.
+anti_patterns:
+  - Opus writing 30 button labels.
+  - Haiku critiquing a flow.
+  - Sending screenshots of every screen when one flow diagram would do.
+handoff_tip: "Brief T2 with the component name, states, token names and 'table only'."
+example:
+  request: "Review my new onboarding flow in Figma and prepare the handoff for the developers."
+  plan: |
+    ROUTING PLAN
+    1. [T3] opus/medium    Critique flow: friction, missing states, a11y risks
+    2. [T2] sonnet/low     Microcopy variants for 6 key screens
+    3. [T3] opus/medium    Pick microcopy for the 2 most important screens
+    4. [T0] tool           Contrast check + token export
+    5. [T2] sonnet/low     Component specs + handoff notes

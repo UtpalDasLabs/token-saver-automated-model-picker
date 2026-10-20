@@ -1,0 +1,48 @@
+name: product-strategy-routing
+who: "Product managers and founders"
+title: Product strategy routing
+persona: Product managers, product leads and founders writing PRDs, roadmaps, strategy memos and decision documents.
+purpose: Keep Opus on the decisions that move the business and push the formatting, summarising and template work down.
+win: Better decisions per hour, with documents that stakeholders read and trust, at a fraction of the token cost.
+description: "Model routing for product management and founders: which tier writes PRDs, roadmaps, strategy memos, user research synthesis, prioritisation and stakeholder updates. Use when planning products, features or go-to-market. Not for writing the code itself."
+sessions_per_week: 12
+tasks:
+  - {task: "Strategy, positioning, trade-off decisions", tier: T3, effort: high, per_week: 2, base_in_k: 50, routed_in_k: 25, out_k: 5, p_fail: 0.05, check: "Options, criteria, recommendation, risks", escalate: "Bet-the-company decision -> T4 second opinion"}
+  - {task: "PRD first draft from a brief", tier: T2, effort: medium, per_week: 2, base_in_k: 30, routed_in_k: 10, out_k: 6, p_fail: 0.08, check: "Template sections all filled, metrics defined", escalate: "Problem statement unclear -> T3"}
+  - {task: "PRD review and gap finding", tier: T3, effort: medium, per_week: 2, base_in_k: 30, routed_in_k: 15, out_k: 2, p_fail: 0.05, check: "Lists risks, edge cases, open questions", escalate: "Never above T3"}
+  - {task: "Synthesise user interviews", tier: T2, effort: medium, per_week: 2, base_in_k: 80, routed_in_k: 25, out_k: 3, p_fail: 0.08, check: "Themes with quote evidence and counts", escalate: "Conflicting signals -> T3 to interpret"}
+  - {task: "Summarise each interview transcript", tier: T1, effort: low, per_week: 6, base_in_k: 15, routed_in_k: 15, out_k: 0.8, p_fail: 0.05, check: "Fixed template: pains, jobs, quotes", escalate: "Never"}
+  - {task: "Prioritise backlog with RICE or similar", tier: T2, effort: low, per_week: 1, base_in_k: 30, routed_in_k: 8, out_k: 2, p_fail: 0.05, check: "Scores computed by formula", escalate: "Final ranking call -> T3"}
+  - {task: "Write user stories and acceptance criteria", tier: T2, effort: low, per_week: 5, base_in_k: 20, routed_in_k: 5, out_k: 2, p_fail: 0.05, check: "Given/When/Then format", escalate: "Never"}
+  - {task: "Weekly stakeholder update", tier: T2, effort: low, per_week: 1, base_in_k: 25, routed_in_k: 6, out_k: 1, p_fail: 0.05, check: "Under 250 words, RAG status", escalate: "Bad news or escalation -> T3 tone review"}
+  - {task: "Competitor feature table", tier: T2, effort: medium, per_week: 1, base_in_k: 40, routed_in_k: 15, out_k: 2, p_fail: 0.10, check: "Every cell has a source", escalate: "Positioning implications -> T3"}
+  - {task: "Meeting notes to action items", tier: T1, effort: low, per_week: 8, base_in_k: 15, routed_in_k: 6, out_k: 0.4, p_fail: 0.05, check: "Owner + date per item", escalate: "Never"}
+  - {task: "Metrics definitions and dashboard specs", tier: T2, effort: medium, per_week: 1, base_in_k: 20, routed_in_k: 8, out_k: 2, p_fail: 0.08, check: "Formula + source table per metric", escalate: "North-star choice -> T3"}
+  - {task: "Pitch or exec narrative", tier: T3, effort: medium, per_week: 1, base_in_k: 30, routed_in_k: 15, out_k: 3, p_fail: 0.05, check: "Story arc, ask, numbers sourced", escalate: "Never above T3"}
+escalate_now:
+  - Pricing, layoffs, partnerships, fundraising or anything an executive will decide on.
+  - Conflicting user research signals.
+  - A roadmap trade-off between two strategic goals.
+context_diet:
+  - Summarise every interview on T1 into a fixed template before synthesis.
+  - Give the PRD writer the brief, the template and the 3 key research themes, not every transcript.
+  - Keep a stable product context card (vision, ICP, metrics, constraints) as the first block.
+tool_first:
+  - RICE/ICE scores with a spreadsheet formula.
+  - Ticket formatting and bulk label changes with the tracker's own bulk edit or API script.
+  - Date maths for roadmaps in a sheet, not a model.
+anti_patterns:
+  - Opus formatting Jira tickets.
+  - Haiku deciding the roadmap.
+  - Feeding 20 raw transcripts into one strategy prompt.
+handoff_tip: "Brief T2 with the product context card, the template, the decided direction and 'no new strategy, flag gaps only'."
+example:
+  request: "I've got 8 user interviews. Turn them into a PRD for a subscription pause feature."
+  plan: |
+    ROUTING PLAN
+    1. [T1] haiku/low      Summarise each interview into the template (batch of 8)
+    2. [T2] sonnet/medium  Synthesise themes with quote evidence and counts
+    3. [T3] opus/high      Decide problem framing, scope and success metrics
+    4. [T2] sonnet/medium  Draft the PRD from the decided framing
+    5. [T3] opus/medium    Review PRD for gaps, risks, edge cases
+    6. [T2] sonnet/low     Write user stories + acceptance criteria

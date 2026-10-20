@@ -1,0 +1,46 @@
+name: educator-creator-routing
+who: "Teachers and course creators"
+title: Educator and course creator routing
+persona: Teachers, tutors, course creators and education YouTubers building lessons, quizzes, flashcards and study apps.
+purpose: Curriculum design and fact accuracy deserve Opus. Generating hundreds of questions, flashcards and translations is volume work for cheaper tiers, with a strong check on correctness.
+win: Accurate learning material at scale, produced at a fraction of the cost, with zero factual errors shipped.
+description: "Model routing for teaching and course creation: which tier designs curricula, writes lessons, generates quizzes and flashcards, translates material, checks answers and creates video scripts for education. Use for lessons, courses, exam prep or study apps. Not for marketing the course."
+sessions_per_week: 10
+tasks:
+  - {task: "Curriculum and learning objectives", tier: T3, effort: medium, per_week: 1, base_in_k: 30, routed_in_k: 12, out_k: 3, p_fail: 0.05, check: "Objectives map to official syllabus", escalate: "Never above T3"}
+  - {task: "Lesson draft from objectives", tier: T2, effort: medium, per_week: 3, base_in_k: 25, routed_in_k: 8, out_k: 3, p_fail: 0.05, check: "Covers each objective, level-appropriate", escalate: "Never"}
+  - {task: "Generate quiz questions and distractors", tier: T2, effort: low, per_week: 6, base_in_k: 20, routed_in_k: 5, out_k: 3, p_fail: 0.08, check: "One correct answer, schema valid", escalate: "Never"}
+  - {task: "Verify answers against the official source", tier: T3, effort: medium, per_week: 3, base_in_k: 30, routed_in_k: 10, out_k: 1, p_fail: 0.05, check: "Each answer has source reference", escalate: "Source unclear -> flag to the user"}
+  - {task: "Flashcards from a word or fact list", tier: T1, effort: low, per_week: 6, base_in_k: 20, routed_in_k: 5, out_k: 3, p_fail: 0.08, check: "Front/back schema, no duplicates", escalate: "Never"}
+  - {task: "Translate learning material", tier: T2, effort: low, per_week: 4, base_in_k: 20, routed_in_k: 8, out_k: 5, p_fail: 0.05, check: "Terms glossary respected", escalate: "Legal or exam wording -> T3"}
+  - {task: "Plain-language explanations", tier: T2, effort: low, per_week: 6, base_in_k: 10, routed_in_k: 3, out_k: 0.8, p_fail: 0.05, check: "Reading level check", escalate: "Never"}
+  - {task: "Grade or give feedback on student writing", tier: T2, effort: medium, per_week: 6, base_in_k: 8, routed_in_k: 4, out_k: 0.8, p_fail: 0.08, check: "Rubric criteria scored", escalate: "Disputed grade -> T3"}
+  - {task: "Educational video script", tier: T2, effort: medium, per_week: 2, base_in_k: 20, routed_in_k: 6, out_k: 2, p_fail: 0.05, check: "Timed, one concept per segment", escalate: "Never"}
+  - {task: "Dedupe, format, export question bank", tier: T0, effort: "-", per_week: 2, base_in_k: 30, routed_in_k: 1.5, out_k: 0.3, p_fail: 0.02, check: "Schema + duplicate check", escalate: "Never"}
+escalate_now:
+  - Exam content where a wrong answer costs a learner a pass (citizenship, licence, certification).
+  - Legal, medical or safety facts.
+  - Disputed grades or complaints from learners.
+context_diet:
+  - Generate questions per topic from the objective list and a short source excerpt, not the whole textbook.
+  - Keep a stable glossary and level card as the first block for translations.
+  - Verification step reads question + answer + source excerpt only.
+tool_first:
+  - Deduplication and schema checks on question banks with a script.
+  - Export to CSV, Anki or JSON with a converter.
+  - Text-to-speech and reading-level scores with tools.
+anti_patterns:
+  - Generating 500 questions on Opus.
+  - Publishing generated exam answers without a T3 source check.
+  - Translating without a glossary, so terms drift.
+handoff_tip: "Brief T2 with the objective, level, source excerpt, schema and 'exactly one correct option'."
+example:
+  request: "Create 200 B1 German grammar drills with explanations, checked and exported for my app."
+  plan: |
+    ROUTING PLAN
+    1. [T3] opus/medium    Map grammar topics to B1 syllabus, set difficulty mix
+    2. [T2] sonnet/low     Generate drills per topic (batches of 20)
+    3. [T0] script         Schema check, dedupe
+    4. [T3] opus/medium    Verify a sample of 40 + all flagged items against grammar rules
+    5. [T2] sonnet/low     Fix flagged items
+    6. [T0] script         Export JSON for the app

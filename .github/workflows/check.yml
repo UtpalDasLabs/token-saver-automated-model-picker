@@ -1,0 +1,14 @@
+name: check
+on: [push, pull_request]
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - run: pip install pyyaml
+      - name: Recompute savings and regenerate skills
+        run: python3 benchmarks/calculate.py && python3 tools/build.py && python3 tools/chart.py
+      - name: Generated files must be committed
+        run: git diff --exit-code

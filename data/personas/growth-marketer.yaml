@@ -1,0 +1,48 @@
+name: growth-marketer-routing
+who: "Marketers, SEO and growth"
+title: Growth marketer routing
+persona: Performance and content marketers, SEO specialists and growth leads running campaigns, ads, email and landing pages.
+purpose: Strategy, positioning and the final pick live on Opus; volume of variants, briefs and SEO plumbing runs on Sonnet, Haiku and scripts.
+win: More tested variants and campaigns shipped per week at a lower cost per winning asset.
+description: "Model routing for marketing and growth: which tier does positioning, campaign strategy, ad copy variants, landing pages, email sequences, SEO briefs, keyword clustering and reporting. Use for campaigns, ads, SEO or lifecycle email. Not for organic social video production."
+sessions_per_week: 12
+tasks:
+  - {task: "Positioning and campaign strategy", tier: T3, effort: high, per_week: 1, base_in_k: 40, routed_in_k: 20, out_k: 4, p_fail: 0.05, check: "ICP, message, offer, channels, metrics", escalate: "Never above T3"}
+  - {task: "Ad copy variants", tier: T2, effort: low, per_week: 10, base_in_k: 12, routed_in_k: 3, out_k: 1.5, p_fail: 0.05, check: "Platform character limits", escalate: "Regulated claims -> T3"}
+  - {task: "Pick winners and plan the next test", tier: T3, effort: medium, per_week: 2, base_in_k: 20, routed_in_k: 6, out_k: 1, p_fail: 0.05, check: "Ranked with rationale + hypothesis", escalate: "Never above T3"}
+  - {task: "Landing page copy from a brief", tier: T2, effort: medium, per_week: 2, base_in_k: 25, routed_in_k: 8, out_k: 3, p_fail: 0.08, check: "Sections match wireframe, one CTA", escalate: "Offer unclear -> T3"}
+  - {task: "Email sequence drafts", tier: T2, effort: medium, per_week: 2, base_in_k: 20, routed_in_k: 6, out_k: 4, p_fail: 0.05, check: "Subject < 50 chars, one goal per mail", escalate: "Never"}
+  - {task: "Keyword clustering and intent tagging", tier: T1, effort: low, per_week: 3, base_in_k: 40, routed_in_k: 12, out_k: 3, p_fail: 0.08, check: "Every keyword in one cluster", escalate: "Clusters overlap heavily -> T2"}
+  - {task: "SEO content brief", tier: T2, effort: low, per_week: 3, base_in_k: 30, routed_in_k: 8, out_k: 2, p_fail: 0.05, check: "H2 outline, intent, entities", escalate: "Never"}
+  - {task: "Meta titles, descriptions, alt text", tier: T1, effort: low, per_week: 10, base_in_k: 8, routed_in_k: 2, out_k: 0.4, p_fail: 0.05, check: "Length limits by formula", escalate: "Never"}
+  - {task: "UTM links and tracking sheet", tier: T0, effort: "-", per_week: 4, base_in_k: 8, routed_in_k: 1.5, out_k: 0.3, p_fail: 0.02, check: "URLs parse, params consistent", escalate: "Never"}
+  - {task: "Weekly campaign report", tier: T2, effort: low, per_week: 1, base_in_k: 30, routed_in_k: 6, out_k: 1.5, p_fail: 0.05, check: "Numbers match export", escalate: "Unexplained swing -> T3"}
+  - {task: "Competitor ad and message teardown", tier: T3, effort: medium, per_week: 1, base_in_k: 30, routed_in_k: 12, out_k: 2, p_fail: 0.05, check: "Angles, offers, gaps to exploit", escalate: "Never above T3"}
+escalate_now:
+  - Health, finance, legal or comparative claims in ads.
+  - Pricing, offer or discount decisions.
+  - Brand repositioning or a rename.
+context_diet:
+  - Keep one stable brand card (voice, ICP, offer, banned claims) at the top of every brief.
+  - Send keyword lists as CSV columns, not pasted SERP pages.
+  - For reports, export only the metric columns the report needs.
+tool_first:
+  - UTM building and URL validation with a sheet or script.
+  - Character counts for ads and meta tags with formulas.
+  - Pulling performance numbers via export or API, not by asking a model to read screenshots.
+anti_patterns:
+  - Opus writing 40 headline variants.
+  - Haiku choosing which ad to scale.
+  - Re-explaining the brand in every prompt instead of a cached brand card.
+handoff_tip: "Brief T2 with the brand card, the audience, the platform limits and 'N numbered variants, no commentary'."
+example:
+  request: "Launch a Google Ads + email campaign for our new B2B pricing tier."
+  plan: |
+    ROUTING PLAN
+    1. [T3] opus/high      Positioning, offer framing, success metrics
+    2. [T1] haiku/low      Cluster 300 keywords by intent
+    3. [T2] sonnet/low     20 RSA headlines + 8 descriptions
+    4. [T0] formula        Length checks, UTM links
+    5. [T3] opus/medium    Pick the 10 strongest headlines (judge-best-output)
+    6. [T2] sonnet/medium  3-email launch sequence
+    7. [T3] opus/high      Claims review before launch (high-stakes-review)
