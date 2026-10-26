@@ -64,8 +64,11 @@ def subs(pl):
     d["TIER_TABLE"] = "\n".join(rows)
     d["HOSTS"] = "\n".join(f"- **{t['name']}**{' (automatic model switching)' if t.get('agents_dir') else ''}: {t['how']} [Docs]({t['doc']})" for t in pl["tools"])
     for i, eff in [(1, "low"), (2, "medium"), (3, "medium")]:
-        lab = f"{T[f'T{i}']['short']}/{eff}"
+        mapped_eff = pl.get("effort_map", {}).get(eff, eff)
+        lab = f"{T[f'T{i}']['short']}/{mapped_eff}"
+        d[f"T{i}_EFFORT"] = mapped_eff
         d[f"PAD{i}"] = " " * max(2, 22 - len(lab))
+    d["T3_HIGH_EFFORT"] = pl.get("effort_map", {}).get("high", "high")
     d["T1S_SHORT"] = T["T1"]["short"]
     return d
 
@@ -84,12 +87,16 @@ def prose(s, pl):
     return s
 
 
+def effort(pl, value):
+    return pl.get("effort_map", {}).get(value, value)
+
+
 def plan(text, pl):
     out = []
     for line in text.rstrip().split("\n"):
         m = re.match(r"^(\s*\d+\.\s+\[(T\d)\])\s+(\S+)\s+(.*)$", line)
         if m and "/" in m.group(3):
-            lab = f"{pl['tiers'][m.group(2)]['short']}/{m.group(3).split('/')[1]}"
+            lab = f"{pl['tiers'][m.group(2)]['short']}/{effort(pl, m.group(3).split('/')[1])}"
             line = f"{m.group(1)} {lab.ljust(22)} {m.group(4)}"
         elif m:
             line = f"{m.group(1)} {m.group(3).ljust(22)} {m.group(4)}"
@@ -103,7 +110,7 @@ def delegate_line(pl):
         tools = " or ".join(t["name"] for t in auto)
         return (f"In {tools}, send T1 work to the `micro-worker` agent, T2 to `standard-worker` and T3 reviews to `strong-reviewer`; "
                 f"each one is pinned to the right {pl['name']} model. Anywhere else, print the routing plan and tell the user which model to use at each step.")
-    return ("In Perplexity Computer, write the tier and model into each step of the plan and keep cheap steps on small context or scripts. "
+    return pl.get("delegate", "In Perplexity Computer, write the tier and model into each step of the plan and keep cheap steps on small context or scripts. "
             "On the Agent API, set `model` per request from the routing table.")
 
 
@@ -112,7 +119,7 @@ def persona_md(p, pl, d):
     T = pl["tiers"]
     lab = lambda tid: "script / tool" if tid == "T0" else T[tid]["label"]
     budget = lambda k: f"≤{k:g}k"
-    rows = "\n".join(f"| {t['task']} | **{t['tier']}** {lab(t['tier'])} | {T[t['tier']].get('force_effort', t['effort']) if t['tier'] != 'T0' else '-'} | {budget(t['routed_in_k'])} | {t['check']} | {prose(t['escalate'], pl)} |"
+    rows = "\n".join(f"| {t['task']} | **{t['tier']}** {lab(t['tier'])} | {effort(pl, T[t['tier']].get('force_effort', t['effort'])) if t['tier'] != 'T0' else '-'} | {budget(t['routed_in_k'])} | {t['check']} | {prose(t['escalate'], pl)} |"
                      for t in sorted(p["tasks"], key=lambda t: t["tier"]))
     bl = lambda xs: "\n".join(f"- {prose(x, pl)}" for x in xs)
     tiers_line = " · ".join(f"**{tid}** {lab(tid) if tid != 'T0' else 'tool'}" for tid in ["T0", "T1", "T2", "T3", "T4"])
@@ -282,7 +289,8 @@ def main():
                 for fn, body in worker_files(pl, t).items():
                     open(os.path.join(ad, fn), "w").write(body)
         routing["platforms"][pl["id"]] = {"name": pl["name"], "pricing_checked": pl["checked"], "pricing_source": pl["source"],
-                                          "tiers": {"T0": None, **{k: {"model": v["model"], "label": v["label"], **({"effort": v["force_effort"]} if v.get("force_effort") else {})} for k, v in pl["tiers"].items()}}}
+                                          "effort_map": pl.get("effort_map", {}),
+                                          "tiers": {"T0": None, **{k: {"model": v["model"], "label": v["label"], **({"effort": effort(pl, v["force_effort"])} if v.get("force_effort") else {})} for k, v in pl["tiers"].items()}}}
         # packages
         dd = J("dist", pl["id"])
         names = sorted(os.listdir(sk))

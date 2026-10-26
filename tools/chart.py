@@ -36,7 +36,7 @@ for j, pl in enumerate(PL):
     x = left + j * cw
     o.append(f'<rect x="{x + 2}" y="{y + 2}" width="{cw - 4}" height="{ch - 4}" rx="3" fill="#111827"/>')
     o.append(f'<text x="{x + cw / 2}" y="{y + 20}" font-size="12" font-weight="700" text-anchor="middle" fill="#ffffff">{v}%</text>')
-o.append(f'<text x="24" y="{H - 20}" font-size="11" fill="#6b7280">github.com/UtpalDasLabs/token-saver-automated-model-picker · list prices checked 2026-10-20 · modeled weekly workloads incl. retries and routing overhead</text>')
+o.append(f'<text x="24" y="{H - 20}" font-size="11" fill="#6b7280">github.com/UtpalDasLabs/token-saver-automated-model-picker · list prices checked {max(pl["checked"] for pl in PL)} · modeled weekly workloads incl. retries and routing overhead</text>')
 o.append("</svg>")
 open(os.path.join(ROOT, "docs/savings.svg"), "w").write("\n".join(o))
 print("wrote docs/savings.svg")

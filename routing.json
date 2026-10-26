@@ -7,6 +7,7 @@
       "name": "Anthropic",
       "pricing_checked": "2026-10-20",
       "pricing_source": "https://platform.claude.com/docs/en/about-claude/pricing",
+      "effort_map": {},
       "tiers": {
         "T0": null,
         "T1": {
@@ -31,6 +32,7 @@
       "name": "OpenAI",
       "pricing_checked": "2026-10-20",
       "pricing_source": "https://developers.openai.com/api/docs/pricing",
+      "effort_map": {},
       "tiers": {
         "T0": null,
         "T1": {
@@ -56,6 +58,7 @@
       "name": "Google",
       "pricing_checked": "2026-10-20",
       "pricing_source": "https://ai.google.dev/gemini-api/docs/pricing",
+      "effort_map": {},
       "tiers": {
         "T0": null,
         "T1": {
@@ -81,6 +84,7 @@
       "name": "DeepSeek",
       "pricing_checked": "2026-10-20",
       "pricing_source": "https://api-docs.deepseek.com/quick_start/pricing",
+      "effort_map": {},
       "tiers": {
         "T0": null,
         "T1": {
@@ -106,6 +110,7 @@
       "name": "Qwen",
       "pricing_checked": "2026-10-20",
       "pricing_source": "https://www.alibabacloud.com/help/en/model-studio/model-pricing",
+      "effort_map": {},
       "tiers": {
         "T0": null,
         "T1": {
@@ -131,6 +136,7 @@
       "name": "Perplexity",
       "pricing_checked": "2026-10-20",
       "pricing_source": "https://docs.perplexity.ai/docs/agent-api/models",
+      "effort_map": {},
       "tiers": {
         "T0": null,
         "T1": {
@@ -148,6 +154,36 @@
         "T4": {
           "model": "anthropic/claude-fable-5-1",
           "label": "Claude Fable 5.1"
+        }
+      }
+    },
+    "kimi": {
+      "name": "Kimi",
+      "pricing_checked": "2026-10-26",
+      "pricing_source": "https://platform.moonshot.ai/docs/pricing/chat",
+      "effort_map": {
+        "low": "low",
+        "medium": "high",
+        "high": "max"
+      },
+      "tiers": {
+        "T0": null,
+        "T1": {
+          "model": "kimi-k3.1-pro",
+          "label": "Kimi K3.1 Pro (low effort)"
+        },
+        "T2": {
+          "model": "kimi-k3.1-pro",
+          "label": "Kimi K3.1 Pro"
+        },
+        "T3": {
+          "model": "kimi-k3.1-pro",
+          "label": "Kimi K3.1 Pro"
+        },
+        "T4": {
+          "model": "kimi-k3.1-pro",
+          "label": "Kimi K3.1 Pro (max effort)",
+          "effort": "max"
         }
       }
     }

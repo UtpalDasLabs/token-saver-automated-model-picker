@@ -1,13 +1,14 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="882" height="596" viewBox="0 0 882 596" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif">
-<rect width="882" height="596" fill="#ffffff"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="990" height="596" viewBox="0 0 990 596" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif">
+<rect width="990" height="596" fill="#ffffff"/>
 <text x="24" y="38" font-size="20" font-weight="700" fill="#111827">Modeled cost saved, by persona and platform</text>
-<text x="24" y="62" font-size="13" fill="#4b5563">Average 72% lower cost, 55% fewer tokens vs. running everything on each platform's strong model.</text>
+<text x="24" y="62" font-size="13" fill="#4b5563">Average 68% lower cost, 55% fewer tokens vs. running everything on each platform's strong model.</text>
 <text x="264.0" y="106" font-size="13" font-weight="700" text-anchor="middle" fill="#111827">Anthropic</text>
 <text x="372.0" y="106" font-size="13" font-weight="700" text-anchor="middle" fill="#111827">OpenAI</text>
 <text x="480.0" y="106" font-size="13" font-weight="700" text-anchor="middle" fill="#111827">Google</text>
 <text x="588.0" y="106" font-size="13" font-weight="700" text-anchor="middle" fill="#111827">DeepSeek</text>
 <text x="696.0" y="106" font-size="13" font-weight="700" text-anchor="middle" fill="#111827">Qwen</text>
 <text x="804.0" y="106" font-size="13" font-weight="700" text-anchor="middle" fill="#111827">Perplexity</text>
+<text x="912.0" y="106" font-size="13" font-weight="700" text-anchor="middle" fill="#111827">Kimi</text>
 <text x="198" y="140" font-size="13" text-anchor="end" fill="#111827">Data analyst</text>
 <rect x="212" y="122" width="104" height="26" rx="3" fill="rgb(38,132,124)"/>
 <text x="264.0" y="140" font-size="12" font-weight="700" text-anchor="middle" fill="#ffffff">84%</text>
@@ -21,6 +22,8 @@
 <text x="696.0" y="140" font-size="12" font-weight="700" text-anchor="middle" fill="#ffffff">88%</text>
 <rect x="752" y="122" width="104" height="26" rx="3" fill="rgb(26,125,117)"/>
 <text x="804.0" y="140" font-size="12" font-weight="700" text-anchor="middle" fill="#ffffff">87%</text>
+<rect x="860" y="122" width="104" height="26" rx="3" fill="rgb(82,158,151)"/>
+<text x="912.0" y="140" font-size="12" font-weight="700" text-anchor="middle" fill="#ffffff">73%</text>
 <text x="198" y="170" font-size="13" text-anchor="end" fill="#111827">Designer</text>
 <rect x="212" y="152" width="104" height="26" rx="3" fill="rgb(134,188,183)"/>
 <text x="264.0" y="170" font-size="12" font-weight="700" text-anchor="middle" fill="#0f2e2b">60%</text>
@@ -34,6 +37,8 @@
 <text x="696.0" y="170" font-size="12" font-weight="700" text-anchor="middle" fill="#ffffff">69%</text>
 <rect x="752" y="152" width="104" height="26" rx="3" fill="rgb(110,174,169)"/>
 <text x="804.0" y="170" font-size="12" font-weight="700" text-anchor="middle" fill="#0f2e2b">66%</text>
+<rect x="860" y="152" width="104" height="26" rx="3" fill="rgb(194,224,220)"/>
+<text x="912.0" y="170" font-size="12" font-weight="700" text-anchor="middle" fill="#0f2e2b">45%</text>
 <text x="198" y="200" font-size="13" text-anchor="end" fill="#111827">Educator and course creator</text>
 <rect x="212" y="182" width="104" height="26" rx="3" fill="rgb(106,172,166)"/>
 <text x="264.0" y="200" font-size="12" font-weight="700" text-anchor="middle" fill="#0f2e2b">67%</text>
@@ -47,6 +52,8 @@
 <text x="696.0" y="200" font-size="12" font-weight="700" text-anchor="middle" fill="#ffffff">77%</text>
 <rect x="752" y="182" width="104" height="26" rx="3" fill="rgb(66,148,141)"/>
 <text x="804.0" y="200" font-size="12" font-weight="700" text-anchor="middle" fill="#ffffff">77%</text>
+<rect x="860" y="182" width="104" height="26" rx="3" fill="rgb(194,224,220)"/>
+<text x="912.0" y="200" font-size="12" font-weight="700" text-anchor="middle" fill="#0f2e2b">45%</text>
 <text x="198" y="230" font-size="13" text-anchor="end" fill="#111827">Growth marketer</text>
 <rect x="212" y="212" width="104" height="26" rx="3" fill="rgb(114,177,171)"/>
 <text x="264.0" y="230" font-size="12" font-weight="700" text-anchor="middle" fill="#0f2e2b">65%</text>
@@ -60,6 +67,8 @@
 <text x="696.0" y="230" font-size="12" font-weight="700" text-anchor="middle" fill="#ffffff">75%</text>
 <rect x="752" y="212" width="104" height="26" rx="3" fill="rgb(82,158,151)"/>
 <text x="804.0" y="230" font-size="12" font-weight="700" text-anchor="middle" fill="#ffffff">73%</text>
+<rect x="860" y="212" width="104" height="26" rx="3" fill="rgb(198,226,223)"/>
+<text x="912.0" y="230" font-size="12" font-weight="700" text-anchor="middle" fill="#0f2e2b">44%</text>
 <text x="198" y="260" font-size="13" text-anchor="end" fill="#111827">Job seeker</text>
 <rect x="212" y="242" width="104" height="26" rx="3" fill="rgb(126,184,178)"/>
 <text x="264.0" y="260" font-size="12" font-weight="700" text-anchor="middle" fill="#0f2e2b">62%</text>
@@ -73,6 +82,8 @@
 <text x="696.0" y="260" font-size="12" font-weight="700" text-anchor="middle" fill="#ffffff">74%</text>
 <rect x="752" y="242" width="104" height="26" rx="3" fill="rgb(90,162,156)"/>
 <text x="804.0" y="260" font-size="12" font-weight="700" text-anchor="middle" fill="#ffffff">71%</text>
+<rect x="860" y="242" width="104" height="26" rx="3" fill="rgb(206,231,228)"/>
+<text x="912.0" y="260" font-size="12" font-weight="700" text-anchor="middle" fill="#0f2e2b">42%</text>
 <text x="198" y="290" font-size="13" text-anchor="end" fill="#111827">Ops assistant</text>
 <rect x="212" y="272" width="104" height="26" rx="3" fill="rgb(42,134,127)"/>
 <text x="264.0" y="290" font-size="12" font-weight="700" text-anchor="middle" fill="#ffffff">83%</text>
@@ -86,6 +97,8 @@
 <text x="696.0" y="290" font-size="12" font-weight="700" text-anchor="middle" fill="#ffffff">88%</text>
 <rect x="752" y="272" width="104" height="26" rx="3" fill="rgb(30,127,119)"/>
 <text x="804.0" y="290" font-size="12" font-weight="700" text-anchor="middle" fill="#ffffff">86%</text>
+<rect x="860" y="272" width="104" height="26" rx="3" fill="rgb(150,198,193)"/>
+<text x="912.0" y="290" font-size="12" font-weight="700" text-anchor="middle" fill="#0f2e2b">56%</text>
 <text x="198" y="320" font-size="13" text-anchor="end" fill="#111827">Product strategy</text>
 <rect x="212" y="302" width="104" height="26" rx="3" fill="rgb(146,195,191)"/>
 <text x="264.0" y="320" font-size="12" font-weight="700" text-anchor="middle" fill="#0f2e2b">57%</text>
@@ -99,6 +112,8 @@
 <text x="696.0" y="320" font-size="12" font-weight="700" text-anchor="middle" fill="#ffffff">69%</text>
 <rect x="752" y="302" width="104" height="26" rx="3" fill="rgb(114,177,171)"/>
 <text x="804.0" y="320" font-size="12" font-weight="700" text-anchor="middle" fill="#0f2e2b">65%</text>
+<rect x="860" y="302" width="104" height="26" rx="3" fill="rgb(214,236,233)"/>
+<text x="912.0" y="320" font-size="12" font-weight="700" text-anchor="middle" fill="#0f2e2b">32%</text>
 <text x="198" y="350" font-size="13" text-anchor="end" fill="#111827">Research analyst</text>
 <rect x="212" y="332" width="104" height="26" rx="3" fill="rgb(58,143,137)"/>
 <text x="264.0" y="350" font-size="12" font-weight="700" text-anchor="middle" fill="#ffffff">79%</text>
@@ -112,6 +127,8 @@
 <text x="696.0" y="350" font-size="12" font-weight="700" text-anchor="middle" fill="#ffffff">85%</text>
 <rect x="752" y="332" width="104" height="26" rx="3" fill="rgb(42,134,127)"/>
 <text x="804.0" y="350" font-size="12" font-weight="700" text-anchor="middle" fill="#ffffff">83%</text>
+<rect x="860" y="332" width="104" height="26" rx="3" fill="rgb(214,236,233)"/>
+<text x="912.0" y="350" font-size="12" font-weight="700" text-anchor="middle" fill="#0f2e2b">28%</text>
 <text x="198" y="380" font-size="13" text-anchor="end" fill="#111827">Sales and BD</text>
 <rect x="212" y="362" width="104" height="26" rx="3" fill="rgb(74,153,146)"/>
 <text x="264.0" y="380" font-size="12" font-weight="700" text-anchor="middle" fill="#ffffff">75%</text>
@@ -125,6 +142,8 @@
 <text x="696.0" y="380" font-size="12" font-weight="700" text-anchor="middle" fill="#ffffff">82%</text>
 <rect x="752" y="362" width="104" height="26" rx="3" fill="rgb(50,139,132)"/>
 <text x="804.0" y="380" font-size="12" font-weight="700" text-anchor="middle" fill="#ffffff">81%</text>
+<rect x="860" y="362" width="104" height="26" rx="3" fill="rgb(202,228,225)"/>
+<text x="912.0" y="380" font-size="12" font-weight="700" text-anchor="middle" fill="#0f2e2b">43%</text>
 <text x="198" y="410" font-size="13" text-anchor="end" fill="#111827">Social creator</text>
 <rect x="212" y="392" width="104" height="26" rx="3" fill="rgb(82,158,151)"/>
 <text x="264.0" y="410" font-size="12" font-weight="700" text-anchor="middle" fill="#ffffff">73%</text>
@@ -138,6 +157,8 @@
 <text x="696.0" y="410" font-size="12" font-weight="700" text-anchor="middle" fill="#ffffff">81%</text>
 <rect x="752" y="392" width="104" height="26" rx="3" fill="rgb(54,141,134)"/>
 <text x="804.0" y="410" font-size="12" font-weight="700" text-anchor="middle" fill="#ffffff">80%</text>
+<rect x="860" y="392" width="104" height="26" rx="3" fill="rgb(182,217,213)"/>
+<text x="912.0" y="410" font-size="12" font-weight="700" text-anchor="middle" fill="#0f2e2b">48%</text>
 <text x="198" y="440" font-size="13" text-anchor="end" fill="#111827">Support and success</text>
 <rect x="212" y="422" width="104" height="26" rx="3" fill="rgb(82,158,151)"/>
 <text x="264.0" y="440" font-size="12" font-weight="700" text-anchor="middle" fill="#ffffff">73%</text>
@@ -151,6 +172,8 @@
 <text x="696.0" y="440" font-size="12" font-weight="700" text-anchor="middle" fill="#ffffff">81%</text>
 <rect x="752" y="422" width="104" height="26" rx="3" fill="rgb(58,143,137)"/>
 <text x="804.0" y="440" font-size="12" font-weight="700" text-anchor="middle" fill="#ffffff">79%</text>
+<rect x="860" y="422" width="104" height="26" rx="3" fill="rgb(186,219,215)"/>
+<text x="912.0" y="440" font-size="12" font-weight="700" text-anchor="middle" fill="#0f2e2b">47%</text>
 <text x="198" y="470" font-size="13" text-anchor="end" fill="#111827">Vibe coder</text>
 <rect x="212" y="452" width="104" height="26" rx="3" fill="rgb(102,169,164)"/>
 <text x="264.0" y="470" font-size="12" font-weight="700" text-anchor="middle" fill="#ffffff">68%</text>
@@ -164,6 +187,8 @@
 <text x="696.0" y="470" font-size="12" font-weight="700" text-anchor="middle" fill="#ffffff">79%</text>
 <rect x="752" y="452" width="104" height="26" rx="3" fill="rgb(66,148,141)"/>
 <text x="804.0" y="470" font-size="12" font-weight="700" text-anchor="middle" fill="#ffffff">77%</text>
+<rect x="860" y="452" width="104" height="26" rx="3" fill="rgb(174,212,208)"/>
+<text x="912.0" y="470" font-size="12" font-weight="700" text-anchor="middle" fill="#0f2e2b">50%</text>
 <text x="198" y="500" font-size="13" text-anchor="end" fill="#111827">Writer and editor</text>
 <rect x="212" y="482" width="104" height="26" rx="3" fill="rgb(150,198,193)"/>
 <text x="264.0" y="500" font-size="12" font-weight="700" text-anchor="middle" fill="#0f2e2b">56%</text>
@@ -177,6 +202,8 @@
 <text x="696.0" y="500" font-size="12" font-weight="700" text-anchor="middle" fill="#0f2e2b">67%</text>
 <rect x="752" y="482" width="104" height="26" rx="3" fill="rgb(114,177,171)"/>
 <text x="804.0" y="500" font-size="12" font-weight="700" text-anchor="middle" fill="#0f2e2b">65%</text>
+<rect x="860" y="482" width="104" height="26" rx="3" fill="rgb(214,236,233)"/>
+<text x="912.0" y="500" font-size="12" font-weight="700" text-anchor="middle" fill="#0f2e2b">35%</text>
 <text x="198" y="530" font-size="13" font-weight="700" text-anchor="end" fill="#111827">Average</text>
 <rect x="212" y="512" width="104" height="26" rx="3" fill="#111827"/>
 <text x="264.0" y="530" font-size="12" font-weight="700" text-anchor="middle" fill="#ffffff">69%</text>
@@ -190,5 +217,7 @@
 <text x="696.0" y="530" font-size="12" font-weight="700" text-anchor="middle" fill="#ffffff">78%</text>
 <rect x="752" y="512" width="104" height="26" rx="3" fill="#111827"/>
 <text x="804.0" y="530" font-size="12" font-weight="700" text-anchor="middle" fill="#ffffff">76%</text>
-<text x="24" y="576" font-size="11" fill="#6b7280">github.com/UtpalDasLabs/token-saver-automated-model-picker · list prices checked 2026-10-20 · modeled weekly workloads incl. retries and routing overhead</text>
+<rect x="860" y="512" width="104" height="26" rx="3" fill="#111827"/>
+<text x="912.0" y="530" font-size="12" font-weight="700" text-anchor="middle" fill="#ffffff">45%</text>
+<text x="24" y="576" font-size="11" fill="#6b7280">github.com/UtpalDasLabs/token-saver-automated-model-picker · list prices checked 2026-10-26 · modeled weekly workloads incl. retries and routing overhead</text>
 </svg>

@@ -1,0 +1,33 @@
+id: kimi
+name: Kimi
+product: Kimi K3.1 Pro
+order: 7
+checked: "2026-10-26"
+source: "https://platform.moonshot.ai/docs/pricing/chat"
+baseline_tier: T3
+baseline_effort: medium
+effort_map: {low: low, medium: high, high: max}
+tiers:
+  T1: {model: kimi-k3.1-pro, short: k3.1-pro, label: "Kimi K3.1 Pro (low effort)", prices: [{upto_k: null, input: 2.00, output: 10.00}]}
+  T2: {model: kimi-k3.1-pro, short: k3.1-pro, label: "Kimi K3.1 Pro", prices: [{upto_k: null, input: 2.00, output: 10.00}]}
+  T3: {model: kimi-k3.1-pro, short: k3.1-pro, label: "Kimi K3.1 Pro", prices: [{upto_k: null, input: 2.00, output: 10.00}]}
+  T4: {model: kimi-k3.1-pro, short: k3.1-pro-max, label: "Kimi K3.1 Pro (max effort)", force_effort: high, prices: [{upto_k: null, input: 2.00, output: 10.00}]}
+context_rule: "Kimi has no supported cheaper micro model. Use T0 scripts, low effort and tight context for savings; do not use retired K2 models."
+price_notes:
+  - "Kimi API list prices. T1-T4 use K3.1 Pro because no supported cheaper micro model is available; savings come from tools, lower effort and smaller context, not model-price arbitrage."
+  - "Kimi Code membership uses quota rather than these per-token API prices. Model IDs in Kimi Code omit the `kimi-` prefix: use `k3.1-pro`; check `/usage` for quota."
+  - "K3.1 Pro requires thinking. T4 means max effort; Highspeed costs twice as much and is not used in the savings model."
+default_tool: kimi-code
+delegate: "In Kimi Code, print the routing plan and use `/model` to select K3.1 Pro with the listed effort before each step. `/secondary-model` sets one default for subagents, but custom agents cannot pin different models; do not claim automatic per-tier switching. On the Kimi API, set `model` and `reasoning_effort` per request from the routing table."
+tools:
+  - id: kimi-code
+    name: Kimi Code
+    auto: false
+    skills_dir: "~/.kimi-code/skills"
+    how: "Skills go in `~/.kimi-code/skills/` (or `.kimi-code/skills/` in a project). Run `/reload`, then invoke `/skill:base-model-routing` and your persona, or let Kimi load them automatically. The skill prints a routing plan; use `/model` to choose K3.1 Pro and its effort for each step. Subagents share `/secondary-model`, so per-tier model switching is not automatic."
+    doc: "https://www.kimi.com/code/docs/en/kimi-code-cli/customization/skills.html"
+  - id: api
+    name: Kimi API
+    auto: true
+    how: "Load `routing.json`, call `kimi-k3.1-pro`, and set `reasoning_effort` to `low`, `high` or `max` by tier. K3.1 Pro requires thinking."
+    doc: "https://platform.moonshot.ai/docs/guide/kimi-k3-1-pro-quickstart"

@@ -1,18 +1,18 @@
 #!/usr/bin/env bash
 # Install Token Saver: Automating the Model Picker.
 #   ./install.sh <platform> [--tool <tool>] [persona-skill ...]
-#   platforms: anthropic openai google deepseek qwen perplexity
+#   platforms: anthropic openai google deepseek qwen perplexity kimi
 #   tools:     claude-code (anthropic, deepseek), codex (openai), gemini-cli (google),
-#              qwen-code (qwen), deepseek-harness (deepseek)
+#              qwen-code (qwen), deepseek-harness (deepseek), kimi-code (kimi)
 #   PREFIX=.  installs into the current project (./.claude, ./.agents, ...) instead of $HOME
 set -euo pipefail
 cd "$(dirname "$0")"
 P="${1:-}"; shift || true
-[ -d "skills/$P" ] || { echo "Usage: ./install.sh <anthropic|openai|google|deepseek|qwen|perplexity> [--tool T] [persona ...]" >&2; exit 1; }
+[ -d "skills/$P" ] || { echo "Usage: ./install.sh <anthropic|openai|google|deepseek|qwen|perplexity|kimi> [--tool T] [persona ...]" >&2; exit 1; }
 TOOL=""
 if [ "${1:-}" = "--tool" ]; then TOOL="$2"; shift 2; fi
 if [ -z "$TOOL" ]; then
-  case "$P" in anthropic) TOOL=claude-code;; openai) TOOL=codex;; google) TOOL=gemini-cli;; qwen) TOOL=qwen-code;; deepseek) TOOL=deepseek-harness;; perplexity) TOOL=none;; esac
+  case "$P" in anthropic) TOOL=claude-code;; openai) TOOL=codex;; google) TOOL=gemini-cli;; qwen) TOOL=qwen-code;; deepseek) TOOL=deepseek-harness;; perplexity) TOOL=none;; kimi) TOOL=kimi-code;; esac
 fi
 H="${PREFIX:-$HOME}"
 case "$TOOL" in
@@ -21,6 +21,7 @@ case "$TOOL" in
   gemini-cli)       SK="$H/.gemini/skills"; AG="$H/.gemini/agents";;
   qwen-code)        SK="$H/.qwen/skills";   AG="$H/.qwen/agents";;
   deepseek-harness) SK="$H/.agents/skills"; AG="";;
+  kimi-code)        SK="$H/.kimi-code/skills"; AG="";;
   none) echo "Perplexity has no local install. In Perplexity Computer: Plugins → Add custom → Import plugin from GitHub,"
         echo "then paste: https://github.com/UtpalDasLabs/token-saver-automated-model-picker/tree/main/dist/perplexity/plugin"
         echo "Or upload single skills from dist/perplexity/*.zip. See platforms/perplexity/README.md."; exit 0;;
@@ -36,4 +37,6 @@ done
 if [ -n "$AG" ] && [ -d "agents/$P/$TOOL" ]; then
   mkdir -p "$AG"; cp agents/"$P"/"$TOOL"/* "$AG/"; echo "  workers micro-worker, standard-worker, strong-reviewer -> $AG"
 fi
-echo "Installed the $P package for $TOOL into $SK. Restart the tool so it picks up the new skills."
+echo "Installed the $P package for $TOOL into $SK."
+if [ "$TOOL" = "kimi-code" ]; then echo "Run /reload in Kimi Code, then use /skill:base-model-routing or your persona skill."
+else echo "Restart the tool so it picks up the new skills."; fi

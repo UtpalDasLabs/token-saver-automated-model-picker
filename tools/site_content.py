@@ -36,14 +36,14 @@ for p in PE:
                                   "pessimisticCost": R["results"][pl["id"]][p["name"]]["conservative_cost_saving_pct"]} for pl in PL]})
 c = {
  "meta": {"title": "Token Saver: Automating the Model Picker — Labs — Utpal Das",
-          "description": f"Open-source AI skills that pick the model for you: each task goes to the cheapest model that can finish it. For Claude, ChatGPT/Codex, Gemini, DeepSeek, Qwen and Perplexity. Modeled {o['avg_cost_saving_pct']}% lower cost, {o['avg_token_saving_pct']}% fewer tokens."},
+          "description": f"Open-source AI skills that pick the model for you: each task goes to the cheapest model that can finish it. For Claude, ChatGPT/Codex, Gemini, DeepSeek, Qwen, Perplexity and Kimi. Modeled {o['avg_cost_saving_pct']}% lower cost, {o['avg_token_saving_pct']}% fewer tokens."},
  "hero": {"eyebrow": "Labs · Open source · For anyone who uses AI at work",
           "title": "Token Saver", "subtitle": "Automating the model picker.",
           "lead": "Most of what we ask AI to do in a week is routine: tag this, rename that, draft a caption, write the test. These skills teach your AI assistant to pick the model for you — a script, a small model, a mid model or the flagship — and to move up only when a check fails. Pick your platform and the way you work, and get the exact package for it.",
           "repoUrl": REPO, "methodUrl": REPO + "/blob/main/METHODOLOGY.md", "resultsUrl": REPO + "/blob/main/benchmarks/RESULTS.md"},
  "stats": {"avgCostSaved": o["avg_cost_saving_pct"], "avgTokensSaved": o["avg_token_saving_pct"],
            "pessimisticCost": o["conservative_avg_cost_saving_pct"], "pessimisticTokens": o["conservative_avg_token_saving_pct"],
-           "platformCount": o["platforms"], "personaCount": o["personas"], "skillCount": 18, "pricingChecked": PL[0]["checked"],
+           "platformCount": o["platforms"], "personaCount": o["personas"], "skillCount": 18, "pricingChecked": max(pl["checked"] for pl in PL),
            "baseline": "Compared with running every task on each platform's strong everyday model, with the full conversation in context."},
  "finder": {"eyebrow": "Find your package", "title": "Pick your platform, then the way you work",
             "lead": "Every persona skill is packaged for each platform, with that platform's own models and prices. Install the base skill plus your persona; the installer does both."},
@@ -53,13 +53,13 @@ c = {
    "points": ["Each persona has a modeled week of real task types — how often, how much context, which tier the skill routes it to.",
               "Baseline: every task on the platform's strong everyday model at default effort, with the full conversation in context.",
               "Routed: each task on its tier's model, with failed attempts paid in full and redone one tier up, plus the cost of writing briefs and loading the skill.",
-              f"Prices are each provider's official list prices, checked {PL[0]['checked']}. Caching, batch and off-peak discounts are not counted — they stack on top.",
+              f"Prices are official API list prices, checked through {max(pl['checked'] for pl in PL)}. Caching, batch and off-peak discounts are not counted — they stack on top. Kimi Code membership quota is not directly comparable to API spending.",
               f"Pessimistic case (failure rates doubled, half the context savings): {o['conservative_avg_cost_saving_pct']}% lower cost, {o['conservative_avg_token_saving_pct']}% fewer tokens. Cost savings hold up because they come from routing; token savings depend on keeping context lean."],
-   "caveat": "These are modeled estimates, not a lab benchmark. Savings differ by platform because the price gap between small and strong models differs. Every assumption is in the repo — change the workload to match your week and re-run the calculator."},
- "labsCard": {"eyebrow": "Open source · 6 AI platforms", "coverHeadline": f"−{o['avg_cost_saving_pct']}% AI COST",
-              "coverCaption": f"{o['avg_token_saving_pct']}% fewer tokens · 13 personas · 6 platforms",
+   "caveat": "These are modeled estimates, not a lab benchmark. Savings differ by platform because the price gap between small and strong models differs. Kimi has no supported cheaper micro model, so its model uses effort and context savings instead. Every assumption is in the repo — change the workload to match your week and re-run the calculator."},
+ "labsCard": {"eyebrow": f"Open source · {o['platforms']} AI platforms", "coverHeadline": f"−{o['avg_cost_saving_pct']}% AI COST",
+              "coverCaption": f"{o['avg_token_saving_pct']}% fewer tokens · {o['personas']} personas · {o['platforms']} platforms",
               "title": "Token Saver: Automating the Model Picker", "tagline": "Your AI picks the cheapest model that can finish each task.",
-              "description": "An open-source skill pack for Claude, ChatGPT and Codex, Gemini, DeepSeek, Qwen and Perplexity. Pick your platform and one of 13 personas — vibe coder, social creator, product, research, ops, marketing, writing, data, design, sales, support, teaching or job search — and get the exact package, with its modeled savings and install steps.",
-              "tags": ["6 PLATFORMS", "13 PERSONAS", "108 SKILLS", "MIT LICENCE"], "cta": "Find your package"}
+              "description": "An open-source skill pack for Claude, ChatGPT and Codex, Gemini, DeepSeek, Qwen, Perplexity and Kimi. Pick your platform and one of 13 personas — vibe coder, social creator, product, research, ops, marketing, writing, data, design, sales, support, teaching or job search — and get the exact package, with its modeled savings and install steps.",
+              "tags": [f"{o['platforms']} PLATFORMS", f"{o['personas']} PERSONAS", f"{o['platforms'] * 18} SKILLS", "MIT LICENCE"], "cta": "Find your package"}
 }
 print(json.dumps(c, indent=2, ensure_ascii=False))

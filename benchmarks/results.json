@@ -1,13 +1,13 @@
 {
   "overall": {
-    "platforms": 6,
+    "platforms": 7,
     "personas": 13,
-    "avg_cost_saving_pct": 72,
+    "avg_cost_saving_pct": 68,
     "avg_token_saving_pct": 55,
-    "conservative_avg_cost_saving_pct": 58,
+    "conservative_avg_cost_saving_pct": 51,
     "conservative_avg_token_saving_pct": 17,
     "range_cost_saving_pct": [
-      44,
+      28,
       88
     ]
   },
@@ -70,6 +70,16 @@
       "avg_cost_saving_pct": 76,
       "avg_token_saving_pct": 55,
       "conservative_avg_cost_saving_pct": 66,
+      "conservative_avg_token_saving_pct": 17
+    },
+    "kimi": {
+      "name": "Kimi",
+      "checked": "2026-10-26",
+      "source": "https://platform.moonshot.ai/docs/pricing/chat",
+      "baseline_model": "Kimi K3.1 Pro",
+      "avg_cost_saving_pct": 45,
+      "avg_token_saving_pct": 55,
+      "conservative_avg_cost_saving_pct": 13,
       "conservative_avg_token_saving_pct": 17
     }
   },
@@ -863,6 +873,138 @@
         "baseline_tokens_m_week": 0.44,
         "routed_tokens_m_week": 0.24,
         "conservative_cost_saving_pct": 52,
+        "conservative_token_saving_pct": 11
+      }
+    },
+    "kimi": {
+      "data-analyst-routing": {
+        "cost_saving_pct": 73,
+        "token_saving_pct": 80,
+        "baseline_usd_week": 3.71,
+        "routed_usd_week": 1.0,
+        "baseline_tokens_m_week": 1.68,
+        "routed_tokens_m_week": 0.34,
+        "conservative_cost_saving_pct": 29,
+        "conservative_token_saving_pct": 32
+      },
+      "designer-routing": {
+        "cost_saving_pct": 45,
+        "token_saving_pct": 55,
+        "baseline_usd_week": 1.12,
+        "routed_usd_week": 0.61,
+        "baseline_tokens_m_week": 0.45,
+        "routed_tokens_m_week": 0.2,
+        "conservative_cost_saving_pct": 14,
+        "conservative_token_saving_pct": 17
+      },
+      "educator-creator-routing": {
+        "cost_saving_pct": 45,
+        "token_saving_pct": 56,
+        "baseline_usd_week": 2.3,
+        "routed_usd_week": 1.25,
+        "baseline_tokens_m_week": 0.81,
+        "routed_tokens_m_week": 0.35,
+        "conservative_cost_saving_pct": 17,
+        "conservative_token_saving_pct": 19
+      },
+      "growth-marketer-routing": {
+        "cost_saving_pct": 44,
+        "token_saving_pct": 56,
+        "baseline_usd_week": 1.93,
+        "routed_usd_week": 1.08,
+        "baseline_tokens_m_week": 0.73,
+        "routed_tokens_m_week": 0.32,
+        "conservative_cost_saving_pct": 14,
+        "conservative_token_saving_pct": 17
+      },
+      "job-seeker-routing": {
+        "cost_saving_pct": 42,
+        "token_saving_pct": 55,
+        "baseline_usd_week": 1.25,
+        "routed_usd_week": 0.72,
+        "baseline_tokens_m_week": 0.51,
+        "routed_tokens_m_week": 0.23,
+        "conservative_cost_saving_pct": 9,
+        "conservative_token_saving_pct": 15
+      },
+      "ops-assistant-routing": {
+        "cost_saving_pct": 56,
+        "token_saving_pct": 64,
+        "baseline_usd_week": 2.88,
+        "routed_usd_week": 1.26,
+        "baseline_tokens_m_week": 1.27,
+        "routed_tokens_m_week": 0.46,
+        "conservative_cost_saving_pct": 19,
+        "conservative_token_saving_pct": 22
+      },
+      "product-strategy-routing": {
+        "cost_saving_pct": 32,
+        "token_saving_pct": 43,
+        "baseline_usd_week": 2.27,
+        "routed_usd_week": 1.54,
+        "baseline_tokens_m_week": 0.9,
+        "routed_tokens_m_week": 0.51,
+        "conservative_cost_saving_pct": 5,
+        "conservative_token_saving_pct": 10
+      },
+      "research-analyst-routing": {
+        "cost_saving_pct": 28,
+        "token_saving_pct": 33,
+        "baseline_usd_week": 4.58,
+        "routed_usd_week": 3.28,
+        "baseline_tokens_m_week": 2.0,
+        "routed_tokens_m_week": 1.33,
+        "conservative_cost_saving_pct": 3,
+        "conservative_token_saving_pct": 6
+      },
+      "sales-bd-routing": {
+        "cost_saving_pct": 43,
+        "token_saving_pct": 51,
+        "baseline_usd_week": 2.87,
+        "routed_usd_week": 1.65,
+        "baseline_tokens_m_week": 1.21,
+        "routed_tokens_m_week": 0.59,
+        "conservative_cost_saving_pct": 10,
+        "conservative_token_saving_pct": 14
+      },
+      "social-creator-routing": {
+        "cost_saving_pct": 48,
+        "token_saving_pct": 60,
+        "baseline_usd_week": 3.96,
+        "routed_usd_week": 2.08,
+        "baseline_tokens_m_week": 1.46,
+        "routed_tokens_m_week": 0.59,
+        "conservative_cost_saving_pct": 16,
+        "conservative_token_saving_pct": 20
+      },
+      "support-success-routing": {
+        "cost_saving_pct": 47,
+        "token_saving_pct": 54,
+        "baseline_usd_week": 4.23,
+        "routed_usd_week": 2.24,
+        "baseline_tokens_m_week": 1.89,
+        "routed_tokens_m_week": 0.87,
+        "conservative_cost_saving_pct": 12,
+        "conservative_token_saving_pct": 16
+      },
+      "vibe-coder-routing": {
+        "cost_saving_pct": 50,
+        "token_saving_pct": 65,
+        "baseline_usd_week": 9.82,
+        "routed_usd_week": 4.94,
+        "baseline_tokens_m_week": 3.9,
+        "routed_tokens_m_week": 1.35,
+        "conservative_cost_saving_pct": 13,
+        "conservative_token_saving_pct": 22
+      },
+      "writer-editor-routing": {
+        "cost_saving_pct": 35,
+        "token_saving_pct": 45,
+        "baseline_usd_week": 1.22,
+        "routed_usd_week": 0.79,
+        "baseline_tokens_m_week": 0.44,
+        "routed_tokens_m_week": 0.24,
+        "conservative_cost_saving_pct": 9,
         "conservative_token_saving_pct": 11
       }
     }

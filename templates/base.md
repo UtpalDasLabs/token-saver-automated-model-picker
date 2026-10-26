@@ -33,7 +33,7 @@ Score the task 0–2 on each axis, then add the scores.
 | Novelty | Done this exact thing before | Variation of a known pattern | New problem |
 
 - Before scoring: if a deterministic tool can do it, use **T0** and stop.
-- Total 0–2 → **T1**. Total 3–4 → **T2**. Total 5–6 → **T3** (`medium`). Total 7–8 → **T3** (`high`); offer **T4** only if the user accepts the cost.
+- Total 0–2 → **T1**. Total 3–4 → **T2**. Total 5–6 → **T3** (`{{T3_EFFORT}}`). Total 7–8 → **T3** (`{{T3_HIGH_EFFORT}}`); offer **T4** only if the user accepts the cost.
 - Hard overrides: anything irreversible and public, any legal/financial/medical claim, and any "which option is best" judgement go to at least T3.
 
 ## Escalation ladder
@@ -77,9 +77,9 @@ Before multi-step work, show the plan in this shape, then execute it:
 ```text
 ROUTING PLAN
 1. [T0] script                rename 40 files to slug format
-2. [T1] {{T1S}}/low{{PAD1}}tag each clip by topic, batch of 40
-3. [T2] {{T2S}}/medium{{PAD2}}write 3 caption variants per clip
-4. [T3] {{T3S}}/medium{{PAD3}}pick the strongest hook, explain why
+2. [T1] {{T1S}}/{{T1_EFFORT}}{{PAD1}}tag each clip by topic, batch of 40
+3. [T2] {{T2S}}/{{T2_EFFORT}}{{PAD2}}write 3 caption variants per clip
+4. [T3] {{T3S}}/{{T3_EFFORT}}{{PAD3}}pick the strongest hook, explain why
 Escalate: any step failing its check twice moves up one tier.
 ```
 
