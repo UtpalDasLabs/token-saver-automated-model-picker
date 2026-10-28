@@ -11,6 +11,12 @@ Packaged for **Anthropic, OpenAI, Google, DeepSeek, Qwen, Perplexity and Kimi**,
 
 Cost savings range from {{RANGE_LO}}% to {{RANGE_HI}}% depending on persona and platform. Compared with running every task on each platform's strong everyday model with full context, including failed attempts, escalations and the routing overhead itself. [How it's calculated](METHODOLOGY.md) · [Every persona on every platform](benchmarks/RESULTS.md) · [Website]({{SITE}})
 
+## Watch the product demo
+
+[![Token Saver product demo](docs/token-saver-poster.jpg)](docs/Token-Saver-Product-Demo.mp4)
+
+[Watch the 38-second demo](docs/Token-Saver-Product-Demo.mp4): the cost problem, smart model routing, platform and workflow selection, and the modeled savings.
+
 ![Modeled cost savings by persona and platform](docs/savings.svg)
 
 ---
